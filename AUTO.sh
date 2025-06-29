@@ -53,7 +53,7 @@ update_answer() {
     local finding_status="$2"
 
 
-    echo "🛠 Updating QUESTION_ID: $question_id → [$finding_status]"
+    echo "Updating QUESTION_ID: $question_id → [$finding_status]"
     echo "Running AWK with input file: $OUTPUT_FILE"
 
     awk -v qid="$question_id" -v newval="$finding_status" -f awk_block.awk "$OUTPUT_FILE" > "${OUTPUT_FILE}.tmp" && mv "${OUTPUT_FILE}.tmp" "$OUTPUT_FILE"
