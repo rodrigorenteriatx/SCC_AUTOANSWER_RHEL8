@@ -20,6 +20,16 @@ while IFS='=' read -r key val; do
 done < check_commands.txt
 
 
+
+# Color variables
+RED='\e[31m'
+GREEN='\e[32m'
+YELLOW='\e[33m'
+BLUE='\e[34m'
+RESET='\e[0m'
+
+
+
 # --------------------------
 # Evaluate results
 # --------------------------
@@ -49,11 +59,26 @@ update_answer() {
     local question_id="$1"
     local finding_status="$2"
 
+    awk -v qid="$question_id" -v newval="$finding_status" -f awk_block.awk "$OUTPUT_FILE" > "${OUTPUT_FILE}.tmp" && mv "${OUTPUT_FILE}.tmp" "$OUTPUT_FILE"
+
+
+    case "$finding_status" in
+        "Finding")
+            STATUS_COLOR="$RED"
+            ;;
+        "Not a Finding")
+            STATUS_COLOR="$GREEN"
+            ;;
+        "Not Applicable"|"Not Reviewed")
+            STATUS_COLOR="$YELLOW"
+            ;;
+        *)
+            STATUS_COLOR="$RESET"
+            ;;
+    esac
 
     echo "Updating QUESTION_ID: $question_id → [$finding_status]"
     echo "Running AWK with input file: $OUTPUT_FILE"
-
-    awk -v qid="$question_id" -v newval="$finding_status" -f awk_block.awk "$OUTPUT_FILE" > "${OUTPUT_FILE}.tmp" && mv "${OUTPUT_FILE}.tmp" "$OUTPUT_FILE"
 }
 
 
