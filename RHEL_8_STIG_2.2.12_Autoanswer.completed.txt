@@ -67,9 +67,9 @@ CCI-000366
      ===========================================================================
      Select One of the following by entering an X in the brackets
      [ ] Finding
-     [ ] Not a Finding
+     [X] Not a Finding
      [ ] Not Applicable
-     [X] Not Reviewed
+     [ ] Not Reviewed
      Enter any comments : 
 
 ******************************* end of question 2 *******************************
@@ -106,10 +106,10 @@ CCI-000366
 
      ===========================================================================
      Select One of the following by entering an X in the brackets
-     [ ] Finding
+     [X] Finding
      [ ] Not a Finding
      [ ] Not Applicable
-     [X] Not Reviewed
+     [ ] Not Reviewed
      Enter any comments : 
 
 ******************************* end of question 3 *******************************
@@ -156,10 +156,10 @@ CCI-000048
 
      ===========================================================================
      Select One of the following by entering an X in the brackets
-     [ ] Finding
+     [X] Finding
      [ ] Not a Finding
      [ ] Not Applicable
-     [X] Not Reviewed
+     [ ] Not Reviewed
      Enter any comments : 
 
 ******************************* end of question 4 *******************************
@@ -197,10 +197,10 @@ CCI-000185
 
      ===========================================================================
      Select One of the following by entering an X in the brackets
-     [ ] Finding
+     [X] Finding
      [ ] Not a Finding
      [ ] Not Applicable
-     [X] Not Reviewed
+     [ ] Not Reviewed
      Enter any comments : 
 
 ******************************* end of question 5 *******************************
@@ -223,10 +223,10 @@ CCI-000186
 
      ===========================================================================
      Select One of the following by entering an X in the brackets
-     [ ] Finding
+     [X] Finding
      [ ] Not a Finding
      [ ] Not Applicable
-     [X] Not Reviewed
+     [ ] Not Reviewed
      Enter any comments : 
 
 ******************************* end of question 6 *******************************
@@ -251,9 +251,9 @@ CCI-001453
      ===========================================================================
      Select One of the following by entering an X in the brackets
      [ ] Finding
-     [ ] Not a Finding
+     [X] Not a Finding
      [ ] Not Applicable
-     [X] Not Reviewed
+     [ ] Not Reviewed
      Enter any comments : 
 
 ******************************* end of question 7 *******************************
@@ -286,10 +286,10 @@ CCI-001453
 
      ===========================================================================
      Select One of the following by entering an X in the brackets
-     [ ] Finding
+     [X] Finding
      [ ] Not a Finding
      [ ] Not Applicable
-     [X] Not Reviewed
+     [ ] Not Reviewed
      Enter any comments : 
 
 ******************************* end of question 8 *******************************

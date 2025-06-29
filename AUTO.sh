@@ -77,8 +77,8 @@ update_answer() {
             ;;
     esac
 
-    echo "Updating QUESTION_ID: $question_id → [$finding_status]"
-    echo "Running AWK with input file: $OUTPUT_FILE"
+    echo -e "Updating QUESTION_ID:${STATUS_COLOR} $question_id → [$finding_status] ${RESET}"
+    echo -e "Running AWK with input file: $OUTPUT_FILE"
 }
 
 
