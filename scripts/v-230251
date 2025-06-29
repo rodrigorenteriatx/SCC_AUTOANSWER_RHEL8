@@ -15,7 +15,7 @@ check_v_230251() {
     fi
 
     # Use awk to find and extract MACs
-    actual=$(awk -f awks/awk-230251.awk "$file")
+    actual=$(awk -f scripts/awks/awk-230251.awk "$file")
 
 #     {
 #       match($0, /-oMACs=([^[:space:]'\''"]+)/, arr)
@@ -42,15 +42,17 @@ check_v_230251() {
 
 
     if [[ "$actual" == "$expected" ]]; then
-        echo "SSH MACs are correctly configured."
-        echo "581=NOT_A_FINDING"
+        # echo "SSH MACs are correctly configured."
+        # echo "581=NOT_A_FINDING"
+        exit 0
     else
-        echo "SSH MACs are incorrect or missing."
-        echo "Found:"
-        echo "$actual"
-        echo "Expected:"
-        echo "$expected"
-        echo "581=FINDING"
+        # echo "SSH MACs are incorrect or missing."
+        # echo "Found:"
+        # echo "$actual"
+        # echo "Expected:"
+        # echo "$expected"
+        # echo "581=FINDING"
+        exit 1
     fi
 }
 

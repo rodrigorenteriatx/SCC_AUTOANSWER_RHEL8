@@ -223,8 +223,8 @@ CCI-000186
 
      ===========================================================================
      Select One of the following by entering an X in the brackets
-     [X] Finding
-     [ ] Not a Finding
+     [ ] Finding
+     [X] Not a Finding
      [ ] Not Applicable
      [ ] Not Reviewed
      Enter any comments : 
@@ -286,10 +286,10 @@ CCI-001453
 
      ===========================================================================
      Select One of the following by entering an X in the brackets
-     [X] Finding
+     [ ] Finding
      [ ] Not a Finding
      [ ] Not Applicable
-     [ ] Not Reviewed
+     [X] Not Reviewed
      Enter any comments : 
 
 ******************************* end of question 8 *******************************
