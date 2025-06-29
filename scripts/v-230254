@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# V-230254 - Ensure OpenSSL uses FIPS-approved crypto
+# QUESTION_ID: ocil:navy.navwar.niwcatlantic.scc.rhel8os:question:641
+
+check_v_230254() {
+    local finding=0
+    local openssl_file="/etc/pki/tls/openssl.cnf"
+    local expected_include=".include /etc/crypto-policies/back-ends/opensslcnf.config"
+
+    echo "Checking for OpenSSL policy inclusion..."
+    if grep -Fq "$expected_include" "$openssl_file"; then
+        echo "Found OpenSSL policy include in $openssl_file"
+    else
+        echo "Missing OpenSSL policy include:"
+        echo "Expected: $expected_include"
+        finding=1
+    fi
+
+
+    echo "Checking if crypto policy is set to FIPS..."
+    current_policy=$(update-crypto-policies --show 2>/dev/null)
+    if [[ "$current_policy" == "FIPS" ]]; then
+        echo "System-wide crypto policy is FIPS"
+    else
+        echo "Crypto policy is NOT FIPS"
+        echo "Found: $current_policy"
+        finding=1
+    fi
+
+    # Final result
+    if [[ $finding -eq 0 ]]; then
+        echo "641=NOT_A_FINDING"
+        exit 0
+    else
+        echo "641=FINDING"
+        exit 1
+    fi
+}
+
+check_v_230254

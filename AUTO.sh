@@ -4,8 +4,6 @@ INPUT_FILE="RHEL_8_STIG_2.2.12_Autoanswer.txt"
 OUTPUT_FILE="RHEL_8_STIG_2.2.12_Autoanswer.completed.txt"
 cp "$INPUT_FILE" "$OUTPUT_FILE"
 
-echo HEREEE
-
 
 # Enable associative arrays
 declare -A CHECK_COMMANDS
@@ -68,5 +66,6 @@ for QID in "${!RESULTS[@]}"; do
     update_answer "$QID" "${RESULTS[$QID]}"
 
 done
-
 echo "Done. Updated file: $OUTPUT_FILE"
+
+
