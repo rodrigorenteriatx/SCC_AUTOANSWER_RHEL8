@@ -1,0 +1,57 @@
+#!/bin/bash
+
+# V-230251: SSH MACs must use only FIPS 140-3 approved algorithms
+# QUESTION_ID: ocil:navy.navwar.niwcatlantic.scc.rhel8os:question:581
+
+check_v_230251() {
+    local file="/etc/crypto-policies/back-ends/opensshserver.config"
+    local expected="hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512,hmac-sha2-256"
+    local actual
+
+    if [[ ! -f "$file" ]]; then
+        echo "❌ File not found: $file"
+        echo "ocil:navy.navwar.niwcatlantic.scc.rhel8os:question:581=FINDING"
+        return
+    fi
+
+    # Use awk to find and extract MACs
+    actual=$(awk -f awks/awk-230251.awk "$file")
+
+#     {
+#       match($0, /-oMACs=([^[:space:]'\''"]+)/, arr)
+#       if (arr[1] != "") print arr[1]
+#     }
+#basically will match AFTER -MACs= ANF BEFORE THE SPACE
+# which is : hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512,hmac-sha2-256
+
+# This is a negated character class, meaning:
+
+#     Match any character that is not in this list, and keep doing it until we hit one that is.
+
+#     ^ → In a character class [], this means "not these characters"
+
+#     [:space:] → POSIX shorthand for all whitespace (space, tab, etc.)
+
+#     ' and " → We explicitly add both types of quotes
+
+#     + → Match one or more of the above (greedy)
+
+# So the whole group means:
+
+#     Match everything after -oMACs= up to (but not including) the first space or quote
+
+
+    if [[ "$actual" == "$expected" ]]; then
+        echo "✅ SSH MACs are correctly configured."
+        echo "ocil:navy.navwar.niwcatlantic.scc.rhel8os:question:581=NOT_A_FINDING"
+    else
+        echo "❌ SSH MACs are incorrect or missing."
+        echo "Found:"
+        echo "$actual"
+        echo "Expected:"
+        echo "$expected"
+        echo "ocil:navy.navwar.niwcatlantic.scc.rhel8os:question:581=FINDING"
+    fi
+}
+
+check_v_230251
