@@ -33,6 +33,10 @@ RESET='\e[0m'
 # --------------------------
 # Evaluate results
 # --------------------------
+
+OUTPUT_LOG="detailed_summary.txt"
+> "$OUTPUT_LOG"
+
 for QID in "${!CHECK_COMMANDS[@]}"; do
     CMD="${CHECK_COMMANDS[$QID]}"
 
@@ -42,11 +46,14 @@ for QID in "${!CHECK_COMMANDS[@]}"; do
     fi
 
 
-    if bash "${CHECK_COMMANDS[$QID]}"; then
+    if OUTPUT=$(bash "${CMD}" 2>&1); then
         RESULTS["$QID"]="Not a Finding"
     else
         RESULTS["$QID"]="Finding"
     fi
+
+echo "$OUTPUT" >> "$OUTPUT_LOG"
+echo "---------------------------" >> "$OUTPUT_LOG"
 done
 
 
