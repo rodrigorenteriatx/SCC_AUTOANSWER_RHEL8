@@ -37,7 +37,6 @@ for QID in "${!CHECK_COMMANDS[@]}"; do
     else
         RESULTS["$QID"]="Finding"
     fi
-    echo "IT WAS A ${RESULTS["$QID"]}"
 done
 
 
@@ -67,5 +66,3 @@ for QID in "${!RESULTS[@]}"; do
 
 done
 echo "Done. Updated file: $OUTPUT_FILE"
-
-
