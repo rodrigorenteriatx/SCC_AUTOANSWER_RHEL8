@@ -9,8 +9,8 @@ check_v_230251() {
     local actual
 
     if [[ ! -f "$file" ]]; then
-        echo "❌ File not found: $file"
-        echo "ocil:navy.navwar.niwcatlantic.scc.rhel8os:question:581=FINDING"
+        echo "File not found: $file"
+        echo "581=FINDING"
         return
     fi
 
@@ -42,15 +42,15 @@ check_v_230251() {
 
 
     if [[ "$actual" == "$expected" ]]; then
-        echo "✅ SSH MACs are correctly configured."
-        echo "ocil:navy.navwar.niwcatlantic.scc.rhel8os:question:581=NOT_A_FINDING"
+        echo "SSH MACs are correctly configured."
+        echo "581=NOT_A_FINDING"
     else
-        echo "❌ SSH MACs are incorrect or missing."
+        echo "SSH MACs are incorrect or missing."
         echo "Found:"
         echo "$actual"
         echo "Expected:"
         echo "$expected"
-        echo "ocil:navy.navwar.niwcatlantic.scc.rhel8os:question:581=FINDING"
+        echo "581=FINDING"
     fi
 }
 
