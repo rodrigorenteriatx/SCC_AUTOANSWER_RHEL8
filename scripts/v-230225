@@ -1,2 +1,2 @@
 #!/bin/bash
-grep -i "^\s*Banner\s" /etc/ssh/sshd_config | grep -v "^#" | grep -q /etc/issue && grep -Fq "You are accessing a U.S. Government (USG) Information System" /etc/issue'
+grep -i "^\s*Banner\s" /etc/ssh/sshd_config | grep -v "^#" | grep -q /etc/issue && grep -Fq "You are accessing a U.S. Government (USG) Information System" /etc/issue
