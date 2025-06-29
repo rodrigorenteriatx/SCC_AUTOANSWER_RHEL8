@@ -1,0 +1,2 @@
+#!/bin/bash
+sudo grep -i nullok /etc/pam.d/system-auth

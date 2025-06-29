@@ -1,0 +1,15 @@
+#!/bin/bash
+cutoff=$(date -d '-30 days' +%Y-%m-%d)
+
+while IFS='|' read -r id cmd d _; do clean_date=$(echo "$d" | xargs)
+   if [[ "$clean_date" > "$cutoff" || "$clean_date" == "$cutoff" ]]; then
+        echo $cutoff
+        echo $clean_date
+        exit 0
+   fi
+done < <(yum history | grep update)
+#Process substitution
+#acts like a file
+# <(yum history | grep update)
+# done < /dev/fd/63
+exit 1
