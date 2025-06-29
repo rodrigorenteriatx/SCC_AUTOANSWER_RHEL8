@@ -1,2 +1,9 @@
 #!/bin/bash
 openssl x509 -in /etc/sssd/pki/sssd_auth_ca_db.pem -noout -issuer -subject -enddate 2>/dev/null | grep -qi "dod root"
+
+
+#OUTPUT
+# openssl x509 -in /etc/sssd/pki/sssd_auth_ca_db.pem -noout -issuer -subject -enddate 2>/dev/null | grep -i "dod root"
+
+# issuer=C = US, O = U.S. Government, OU = DoD, OU = PKI, CN = DoD Root CA 6
+# subject=C = US, O = U.S. Government, OU = DoD, OU = PKI, CN = DoD Root CA 6

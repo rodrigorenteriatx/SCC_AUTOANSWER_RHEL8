@@ -1,0 +1,65 @@
+#!/bin/bash
+
+# V-230230 - Ensure SSH private keys are protected by a passphrase
+# QUESTION_ID: ocil:navy.navwar.niwcatlantic.scc.rhel8os:question:181
+
+get_user_homes() {
+    if command -v adquery >/dev/null 2>&1; then
+        adquery user | while read -r user; do
+            home=$(getent passwd "$user" | cut -d: -f6)
+            ls "$home" >/dev/null 2>&1
+            [[ -d "$home" ]] && echo "$user:$home"
+        done
+    else
+        #Only match lines where the 6th field (home directory) starts with /home or /root.
+        #prints the username and their home directory
+        #bob:/home/bob
+        awk -F: '$6 ~ /^\/(home|root)/ {print $1":"$6}' /etc/passwd
+    fi
+}
+
+check_v_230230() {
+    local finding=0
+    local key
+    local key_type
+    echo "### SSH Private Key Passphrase Check ###"
+    echo
+
+    # Add static system directory to scan
+    echo "system:/etc/ssh" >> /tmp/v230230.homes
+
+    # Gather user home directories and system-wide
+    get_user_homes >> /tmp/v230230.homes
+
+    while IFS=: read -r user home; do
+        # Print header per user
+        echo "User: $user"
+        #Need the \(\) so the shell doesnt misinterpret, and to applly multiple -name filters using -o  (OR)
+        keys=$(find "$home" -type f \( -name "id_rsa" -o -name "id_ecdsa" -o -name "id_ed25519" \) 2>/dev/null)
+
+        if [[ -z "$keys" ]]; then
+            echo "  No private SSH keys found."
+        fi
+
+        for key in $keys; do
+            if ssh-keygen -y -f "$key" >/dev/null 2>&1; then
+                echo "  $key → NOT password protected"
+                finding=1
+            else
+                echo "  $key → Password protected (or invalid)"
+            fi
+        done
+        echo
+    done < /tmp/v230230.homes
+
+    rm -f /tmp/v230230.homes
+
+    if [[ $finding -eq 1 ]]; then
+        echo "181=FINDING"
+    else
+        echo "181=NOT_A_FINDING"
+    fi
+}
+
+# Execute the check
+check_v_230230
