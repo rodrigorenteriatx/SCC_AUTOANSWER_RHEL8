@@ -11,7 +11,7 @@ RESULT: Finding
 [7321] V-268322 - scripts/v-268322
 auth       [success=1 default=bad]     pam_unix.so          try_first_pass nullok
 password   required                    pam_unix.so          try_first_pass nullok shadow
-RESULT: Not a Finding
+RESULT: Finding
 ------------------------------------------
 [21] V-230222 - scripts/v-230222
 scripts/v-230222: line 10: yum: command not found
