@@ -9,6 +9,7 @@ cp "$INPUT_FILE" "$OUTPUT_FILE"
 declare -A CHECK_COMMANDS
 declare -A RESULTS
 declare -A VNUMBERS
+declare -A COMMENTS
 ORDERED_KEYS=()
 
 # --------------------------
@@ -58,8 +59,9 @@ for qid in "${ORDERED_KEYS[@]}"; do
         RESULTS["$qid"]="Finding"
     fi
 
-    #1. output rule/vnum first, 2. output from script 3. ------- at then end
+    #1. output rule/vnum first, 2. output from script to COMMENTS AND THE OUTPU_LOG3. ------- at then end
     echo -e "${BLUE}[$qid] $vnum - $script${RESET}" | tee -a "$OUTPUT_LOG"
+    echo "$script_output" | tee -a "$COMMENTS"
     echo "$script_output" | tee -a "$OUTPUT_LOG"
     echo "RESULT: ${RESULTS["$qid"]}" | tee -a "$OUTPUT_LOG"
     echo "------------------------------------------" | tee -a "$OUTPUT_LOG"
