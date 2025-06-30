@@ -1,6 +1,10 @@
 # SCC\_AUTOANSWER\_RHEL8
 
 A Bash framework to automate responses for manual questions in DISA SCAP Compliance Checker (SCC) Autoanswer files for RHEL 8 STIG benchmarks.
+##
+NOTES:
+Currently still working on this toool, finished 7 questions , on question_id 641 06/29/2025
+
 
 ## Overview
 
