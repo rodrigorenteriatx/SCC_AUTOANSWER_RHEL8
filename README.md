@@ -24,7 +24,7 @@ This tool automates the process of answering manual checks in the SCC Autoanswer
 ├── autoanswer.sh                 # Main script
 ├── check_commands.txt            # Maps QUESTION_IDs to Bash scripts
 ├── RHEL_8_STIG_*.txt             # SCC Autoanswer input/output files
-├── awk_update_block.awk          # Optional external AWK logic block
+├── awk_block.awk                 # AWK logic block
 ├── results_summary.txt           # Final summary of pass/fail checks
 ├── detailed_check_output.txt     # Output from each shell command
 ```
@@ -34,7 +34,7 @@ This tool automates the process of answering manual checks in the SCC Autoanswer
 1. Populate `check_commands.txt` with lines in the format:
 
    ```
-   QUESTION_ID=command_to_run
+   QUESTION_ID|VULNERABILITY_ID|SCRIPT_TO_RUN
    ```
 
 2. Place your `Autoanswer.txt` file in the directory.
