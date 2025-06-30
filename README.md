@@ -21,12 +21,12 @@ This tool automates the process of answering manual checks in the SCC Autoanswer
 
 ```
 .
-├── autoanswer.sh                 # Main script
-├── check_commands.txt            # Maps QUESTION_IDs to Bash scripts
-├── RHEL_8_STIG_*.txt             # SCC Autoanswer input/output files
-├── awk_block.awk                 # AWK logic block
-├── results_summary.txt           # Final summary of pass/fail checks
-├── detailed_check_output.txt     # Output from each shell command
+├── AUTO.sh                 # Main script
+├── check_commands.txt            # Maps QUESTION_IDs to vulnerability_id and Bash scripts
+├── RHEL_8_STIG_*.txt             # SCC Autoanswer input/output files (OUPUT=RHEL_8_STIG_2.2.12_Autoanswer.completed.txt)  
+├── awk_block.awk                 # AWK logic block used to format RHEL_8_STIG_2.2.12_Autoanswer.txt
+├── scripts/*                     # Location of rule check scripts and more awk logic scripts
+├── detailed_summary.txt          # Output from each shell command
 ```
 
 ## Usage
