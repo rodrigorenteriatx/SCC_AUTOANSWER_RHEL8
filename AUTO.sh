@@ -66,6 +66,8 @@ for qid in "${ORDERED_KEYS[@]}"; do
     echo "$script_output" | tee -a "$OUTPUT_LOG"
     echo "RESULT: ${RESULTS["$qid"]}" | tee -a "$OUTPUT_LOG"
     echo "------------------------------------------" | tee -a "$OUTPUT_LOG"
+    echo "##########################################" | tee -a "$OUTPUT_LOG"
+    echo "------------------------------------------" | tee -a "$OUTPUT_LOG"
 done
 
 
