@@ -36,7 +36,7 @@ found == 1 {
         print
         split(comment, lines, "\n")
         for (i in lines) {
-            print "     # " lines[i]
+            print "       " lines[i]
         }
         next
     }
