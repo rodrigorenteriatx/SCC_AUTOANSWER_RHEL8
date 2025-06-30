@@ -6,6 +6,7 @@ cp "$INPUT_FILE" "$OUTPUT_FILE"
 
 
 # Enable associative arrays
+#create the list of ordered question_ids
 declare -A CHECK_COMMANDS
 declare -A RESULTS
 declare -A VNUMBERS
@@ -59,6 +60,8 @@ for qid in "${ORDERED_KEYS[@]}"; do
         RESULTS["$qid"]="Finding"
     fi
 
+    #OUTPUT FROM EACH COMMAND WILL ALSO BE STORED HERE, MEANT FOR THE AUTOANSWER.TXT
+    #THE FOLLOWING OUTPUT AFTER, WILL NOT BE INCLUDED BUT WILL BE USED TO FORMAT THE detailed_summary.txt which will CLEANLY mirror the AUTOANSWER.txt
     COMMENTS["$qid"]="$script_output"
 
     #1. output rule/vnum first, 2. output from script to COMMENTS AND THE OUTPU_LOG3. ------- at then end
