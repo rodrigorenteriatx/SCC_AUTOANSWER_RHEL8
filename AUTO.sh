@@ -58,8 +58,11 @@ for qid in "${ORDERED_KEYS[@]}"; do
         RESULTS["$qid"]="Finding"
     fi
 
-    echo "$script_output" >> "$OUTPUT_LOG"
-    echo "---------------------------" >> "$OUTPUT_LOG"
+    #1. output rule/vnum first, 2. output from script 3. ------- at then end
+    echo -e "${BLUE}[$qid] $vnum - $script${RESET}" | tee -a "$OUTPUT_LOG"
+    echo "$script_output" | tee -a "$OUTPUT_LOG"
+    echo "RESULT: ${RESULTS["$qid"]}" | tee -a "$OUTPUT_LOG"
+    echo "------------------------------------------" | tee -a "$OUTPUT_LOG"
 done
 
 
