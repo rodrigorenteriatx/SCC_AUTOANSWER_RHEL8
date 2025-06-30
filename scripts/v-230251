@@ -9,8 +9,7 @@ check_v_230251() {
     local actual
 
     if [[ ! -f "$file" ]]; then
-        echo "File not found: $file"
-        echo "581=FINDING"
+        echo "FILE NOT FOUND: $file"
         return
     fi
 
@@ -42,16 +41,18 @@ check_v_230251() {
 
 
     if [[ "$actual" == "$expected" ]]; then
-        # echo "SSH MACs are correctly configured."
-        # echo "581=NOT_A_FINDING"
+        echo "SSH MACs are correctly configured."
+        echo "Found:"
+        echo "$actual"
+        echo "Expected:"
+        echo "$expected"
         exit 0
     else
-        # echo "SSH MACs are incorrect or missing."
-        # echo "Found:"
-        # echo "$actual"
-        # echo "Expected:"
-        # echo "$expected"
-        # echo "581=FINDING"
+        echo "INCORRECT OF MISSING."
+        echo "Found:"
+        echo "$actual"
+        echo "Expected:"
+        echo "$expected"
         exit 1
     fi
 }

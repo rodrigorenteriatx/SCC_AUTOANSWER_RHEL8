@@ -55,10 +55,8 @@ check_v_230230() {
     rm -f /tmp/v230230.homes
 
     if [[ $finding -eq 1 ]]; then
-        echo "181=FINDING"
         exit 0
     else
-        echo "181=NOT_A_FINDING"
         exit 1
     fi
 }
