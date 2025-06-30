@@ -2,7 +2,7 @@
 
 
 openssl x509 -in /etc/sssd/pki/sssd_auth_ca_db.pem -noout -issuer -subject -enddate 2>/dev/null | grep -i "dod root" || echo "DOD ROOT NOT FOUND"
-
+#
 
 #OUTPUT
 # openssl x509 -in /etc/sssd/pki/sssd_auth_ca_db.pem -noout -issuer -subject -enddate 2>/dev/null | grep -i "dod root"
