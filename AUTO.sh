@@ -8,15 +8,20 @@ cp "$INPUT_FILE" "$OUTPUT_FILE"
 # Enable associative arrays
 declare -A CHECK_COMMANDS
 declare -A RESULTS
+declare -A VNUMBERS
+ORDERED_KEYS=()
 
 # --------------------------
 # Populate COMMAND dictionary
 # --------------------------
 
-while IFS='=' read -r key val; do
+while IFS='|' read -r qid vnum script; do
     # Skip blank lines or comments
-    [[ -z "$key" || "$key" =~ ^# ]] && continue
-    CHECK_COMMANDS["$key"]="$val"
+    [[ -z "$qid" || "$qid" =~ ^# ]] && continue
+
+    ORDERED_KEYS+=("$qid")
+    VNUMBERS["$qid"]="$vnum"
+    CHECK_COMMANDS["$qid"]="$script"
 done < check_commands.txt
 
 
@@ -37,23 +42,24 @@ RESET='\e[0m'
 OUTPUT_LOG="detailed_summary.txt"
 > "$OUTPUT_LOG"
 
-for QID in "${!CHECK_COMMANDS[@]}"; do
-    CMD="${CHECK_COMMANDS[$QID]}"
+for qid in "${ORDERED_KEYS[@]}"; do
+    script="${CHECK_COMMANDS[$qid]}"
+    vnum="${VNUMBERS["$qid"]}"
 
-    if [[ -z "$CMD" ]]; then
-        echo "SKIPPING $QID"
+    if [[ -z "$script" ]]; then
+        echo "SKIPPING $qid ($vnum)"
         continue
     fi
 
 
-    if OUTPUT=$(bash "${CMD}" 2>&1); then
-        RESULTS["$QID"]="Not a Finding"
+    if script_output=$(bash "${script}" 2>&1); then
+        RESULTS["$qid"]="Not a Finding"
     else
-        RESULTS["$QID"]="Finding"
+        RESULTS["$qid"]="Finding"
     fi
 
-echo "$OUTPUT" >> "$OUTPUT_LOG"
-echo "---------------------------" >> "$OUTPUT_LOG"
+    echo "$script_output" >> "$OUTPUT_LOG"
+    echo "---------------------------" >> "$OUTPUT_LOG"
 done
 
 
@@ -85,7 +91,7 @@ update_answer() {
     esac
 
     echo -e "Updating QUESTION_ID:${STATUS_COLOR} $question_id → [$finding_status] ${RESET}"
-    echo -e "Running AWK with input file: $OUTPUT_FILE"
+    #echo -e "Running AWK with input file: $OUTPUT_FILE"
 }
 
 
@@ -97,4 +103,4 @@ for QID in "${!RESULTS[@]}"; do
     update_answer "$QID" "${RESULTS[$QID]}"
 
 done
-echo "Done. Updated file: $OUTPUT_FILE"
+echo "Done. Updated AUTOANSWER file: $OUTPUT_FILE"
