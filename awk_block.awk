@@ -11,6 +11,14 @@ $0 ~ ("^QUESTION_ID.*question:" qid "$") {
     next
 }
 
+#match(string, regex, array)
+
+#$0 -> the entire current line
+#Purpose: Finds a match and stores capture groups in array.
+
+#split(string, array, delimiter)
+
+#Splits a string by a delimiter into an array.
 
 found == 1 {
     if (match($0, /^[[:space:]]*\[[Xx ]\][[:space:]]*(Finding|Not a Finding|Not Applicable|Not Reviewed)/, arr)) {
