@@ -1,3 +1,8 @@
 #!/bin/bash
 #Using [[:space:]] as its more posix compatible
-grep -i "^[[:space:]]*Banner[[:space:]]" /etc/ssh/sshd_config | grep -v "^#" | grep -q /etc/issue && grep -Fq "You are accessing a U.S. Government (USG) Information System" /etc/issue
+#If it find it it will exit with 0
+#but regardlesss comments should output
+echo $
+
+
+grep -i "^[[:space:]]*Banner[[:space:]]" /etc/ssh/sshd_config | grep -v "^#" | grep /etc/issue && grep -F "You are accessing a U.S. Government (USG) Information System" /etc/issue
