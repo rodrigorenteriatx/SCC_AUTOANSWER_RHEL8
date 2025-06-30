@@ -14,16 +14,17 @@ password   required                    pam_unix.so          try_first_pass nullo
 RESULT: Finding
 ------------------------------------------
 [21] V-230222 - scripts/v-230222
-scripts/v-230222: line 10: yum: command not found
+CUTOFF 2025-05-30
+scripts/v-230222: line 11: yum: command not found
 RESULT: Finding
 ------------------------------------------
 [81] V-230225 - scripts/v-230225
-
+\S{PRETTY_NAME} \r (\l)
 RESULT: Finding
 ------------------------------------------
 [161] V-230229 - scripts/v-230229
-
-RESULT: Finding
+DOD ROOT NOT FOUND
+RESULT: Not a Finding
 ------------------------------------------
 [181] V-230230 - scripts/v-230230
 ### SSH Private Key Passphrase Check ###
