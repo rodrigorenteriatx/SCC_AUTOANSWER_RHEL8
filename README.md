@@ -4,7 +4,7 @@ A Bash framework to automate responses for manual questions in DISA SCAP Complia
 
 ## Overview
 
-This tool automates the process of answering manual checks in the SCC Autoanswer file by using hardcoded shell logic and updating the appropriate `[ ] Finding` fields in the file. It eliminates the need to manually edit check results after each scan.
+This tool automates the process of answering manual checks in the SCC Autoanswer file by using hardcoded shell logic and updating the appropriate `[ ] Finding` fields in the file. It eliminates the need to manually edit check results after each scan. This will also fill the section meant for comments with the appropriate output to further justify its result.
 
 ## Features
 
