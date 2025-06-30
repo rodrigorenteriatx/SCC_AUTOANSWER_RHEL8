@@ -1,0 +1,52 @@
+[61] V-230224 - scripts/v-230224
+NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
+sda           8:0    1     0B  0 disk 
+zram0       254:0    0     4G  0 disk [SWAP]
+nvme0n1     259:0    0 238.5G  0 disk 
+├─nvme0n1p1 259:1    0   203M  0 part /boot
+├─nvme0n1p2 259:2    0   143G  0 part /
+└─nvme0n1p3 259:3    0  95.2G  0 part /home
+RESULT: Finding
+------------------------------------------
+[7321] V-268322 - scripts/v-268322
+auth       [success=1 default=bad]     pam_unix.so          try_first_pass nullok
+password   required                    pam_unix.so          try_first_pass nullok shadow
+RESULT: Not a Finding
+------------------------------------------
+[21] V-230222 - scripts/v-230222
+scripts/v-230222: line 10: yum: command not found
+RESULT: Finding
+------------------------------------------
+[81] V-230225 - scripts/v-230225
+
+RESULT: Finding
+------------------------------------------
+[161] V-230229 - scripts/v-230229
+
+RESULT: Finding
+------------------------------------------
+[181] V-230230 - scripts/v-230230
+### SSH Private Key Passphrase Check ###
+
+User: system
+  No private SSH keys found.
+
+User: root
+  No private SSH keys found.
+
+User: rod
+  /home/rod/.ssh/my_keys/id_ed25519 → NOT password protected
+  /home/rod/.ssh/id_ed25519 → NOT password protected
+  /home/rod/.ssh/id_rsa → Password protected (or invalid)
+
+User: testuser
+  No private SSH keys found.
+
+181=FINDING
+RESULT: Not a Finding
+------------------------------------------
+[581] V-230251 - scripts/v-230251
+File not found: /etc/crypto-policies/back-ends/opensshserver.config
+581=FINDING
+RESULT: Not a Finding
+------------------------------------------

@@ -24,6 +24,16 @@ found == 1 {
         next
     }
 
+    if ($0 ~ /^[[:space:]]*Enter any comments *:/) {
+        print
+        split(comment, lines, "\n")
+        for (i in lines) {
+            print "     # " lines[i]
+        }
+        next
+    }
+
+
     if (within_checklist == 1) {
         found = 0
         within_checklist = 0

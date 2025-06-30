@@ -1,8 +1,11 @@
 #!/bin/bash
+
+lsblk
 for d in $(lsblk -lnpo NAME,TYPE | awk '$2=="part"{print $1}'); do
     mountpoint=$(lsblk -npo MOUNTPOINT "$d" | head -n1)
     [[ "$mountpoint" == "/boot" || "$mountpoint" == "/boot/efi" ]] && continue
     blkid "$d" | grep -q 'TYPE="crypto_LUKS"' || exit 1
 done
 
-echo 0
+
+exit 0

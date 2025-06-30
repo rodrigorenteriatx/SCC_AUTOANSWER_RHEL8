@@ -59,9 +59,10 @@ for qid in "${ORDERED_KEYS[@]}"; do
         RESULTS["$qid"]="Finding"
     fi
 
+    COMMENTS["$qid"]="$script_output"
+
     #1. output rule/vnum first, 2. output from script to COMMENTS AND THE OUTPU_LOG3. ------- at then end
-    echo -e "${BLUE}[$qid] $vnum - $script${RESET}" | tee -a "$OUTPUT_LOG"
-    echo "$script_output" | tee -a "$COMMENTS"
+    echo "[$qid] $vnum - $script" | tee -a "$OUTPUT_LOG"
     echo "$script_output" | tee -a "$OUTPUT_LOG"
     echo "RESULT: ${RESULTS["$qid"]}" | tee -a "$OUTPUT_LOG"
     echo "------------------------------------------" | tee -a "$OUTPUT_LOG"
@@ -76,8 +77,9 @@ done
 update_answer() {
     local question_id="$1"
     local finding_status="$2"
+    local comment="$3"
 
-    awk -v qid="$question_id" -v newval="$finding_status" -f awk_block.awk "$OUTPUT_FILE" > "${OUTPUT_FILE}.tmp" && mv "${OUTPUT_FILE}.tmp" "$OUTPUT_FILE"
+    awk -v qid="$question_id" -v newval="$finding_status" -v comment="$comment" -f awk_block.awk "$OUTPUT_FILE" > "${OUTPUT_FILE}.tmp" && mv "${OUTPUT_FILE}.tmp" "$OUTPUT_FILE"
 
 
     case "$finding_status" in
@@ -104,8 +106,9 @@ update_answer() {
 # Loop through and update
 # --------------------------
 
-for QID in "${!RESULTS[@]}"; do
-    update_answer "$QID" "${RESULTS[$QID]}"
+for qid in "${!RESULTS[@]}"; do
+
+    update_answer "$qid" "${RESULTS[$qid]}" "${COMMENTS["$qid"]}"
 
 done
 echo "Done. Updated AUTOANSWER file: $OUTPUT_FILE"
