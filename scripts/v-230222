@@ -5,7 +5,8 @@ echo "CUTOFF $cutoff"
 while IFS='|' read -r id cmd d _; do
    clean_date=$(echo "$d" | xargs)
    if [[ "$clean_date" > "$cutoff" || "$clean_date" == "$cutoff" ]]; then
-        exit 0
+      echo "LAST UPDATED: $clean_date"
+      exit 0
    fi
 done < <(yum history | grep update | tee /dev/stderr )
 #Process substitution
