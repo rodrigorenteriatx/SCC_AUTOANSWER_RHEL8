@@ -6,7 +6,7 @@ BEGIN {
 $0 ~ ("^QUESTION_ID.*question:" qid "$") {
     found = 1
     within_checklist = 0
-    print "DEBUG: Matched QUESTION_ID " qid > "/dev/stderr"
+    #print "DEBUG: Matched QUESTION_ID " qid > "/dev/stderr"
     print
     next
 }
