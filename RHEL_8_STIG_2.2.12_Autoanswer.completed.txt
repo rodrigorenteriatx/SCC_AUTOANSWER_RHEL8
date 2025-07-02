@@ -278,8 +278,8 @@ CCI-001453
 
      ===========================================================================
      Select One of the following by entering an X in the brackets
-     [ ] Finding
-     [X] Not a Finding
+     [X] Finding
+     [ ] Not a Finding
      [ ] Not Applicable
      [ ] Not Reviewed
      Enter any comments : 
@@ -315,11 +315,12 @@ CCI-001453
 
      ===========================================================================
      Select One of the following by entering an X in the brackets
-     [ ] Finding
+     [X] Finding
      [ ] Not a Finding
      [ ] Not Applicable
-     [X] Not Reviewed
+     [ ] Not Reviewed
      Enter any comments : 
+       Missing /etc/pki/tls/openssl.cnf
 
 ******************************* end of question 8 *******************************
 
@@ -341,11 +342,12 @@ CCI-001453
 
      ===========================================================================
      Select One of the following by entering an X in the brackets
-     [ ] Finding
+     [X] Finding
      [ ] Not a Finding
      [ ] Not Applicable
-     [X] Not Reviewed
+     [ ] Not Reviewed
      Enter any comments : 
+       FILE /etc/crypto-policies/back-ends/gnutls.config NOT FOUND
 
 ******************************* end of question 9 *******************************
 

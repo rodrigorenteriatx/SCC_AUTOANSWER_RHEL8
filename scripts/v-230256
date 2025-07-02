@@ -1,0 +1,45 @@
+#!/bin/bash
+
+#681
+
+# QUESTION_TEXT    : Verify the GnuTLS library is configured to only allow DoD-approved SSL/TLS Versions:
+
+# $ sudo grep -io +vers.*  /etc/crypto-policies/back-ends/gnutls.config
+
+# +VERS-ALL:-VERS-DTLS0.9:-VERS-SSL3.0:-VERS-TLS1.0:-VERS-TLS1.1:-VERS-DTLS1.0:+COMP-NULL:%PROFILE_MEDIUM
+
+# If the "gnutls.config" does not list "-VERS-DTLS0.9:-VERS-SSL3.0:-VERS-TLS1.0:-VERS-TLS1.1:-VERS-DTLS1.0" to disable unapproved SSL/TLS versions, this is a finding.
+
+check_v_230256 () {
+    local file=/etc/crypto-policies/back-ends/gnutls.config
+    local finding=0
+    if [ ! -f "$file" ];then
+        echo "FILE $file NOT FOUND"
+        exit 1
+    fi
+
+    VERSIONS=(
+        "-VERS-DTLS0.9"
+        "-VERS-SSL3.0"
+        "-VERS-TLS1.0"
+        "-VERS-TLS1.1"
+        "-VERS-DTLS1.0"
+    )
+
+
+    for v in "${VERSIONS[@]}"; do
+        if [ ! grep -qE "$v" "$file" ]; then
+            echo "MISSING:  $v"
+            finding=1
+        fi
+    done
+
+    if $finding; then
+        exit 1
+    else
+        exit 0
+    fi
+
+}
+
+check_v_230256

@@ -58,7 +58,19 @@ RESULT: Not a Finding
 ------------------------------------------
 [581] V-230251 - scripts/v-230251
 FILE NOT FOUND: /etc/crypto-policies/back-ends/opensshserver.config
-RESULT: Not a Finding
+RESULT: Finding
+------------------------------------------
+##########################################
+------------------------------------------
+[641] V-230254 - scripts/v-230254
+Missing /etc/pki/tls/openssl.cnf
+RESULT: Finding
+------------------------------------------
+##########################################
+------------------------------------------
+[681] V-230256 - scripts/v-230256
+FILE /etc/crypto-policies/back-ends/gnutls.config NOT FOUND
+RESULT: Finding
 ------------------------------------------
 ##########################################
 ------------------------------------------
