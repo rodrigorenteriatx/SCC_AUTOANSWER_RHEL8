@@ -1,0 +1,35 @@
+#!/bin/bash
+#821
+# QUESTION_TEXT    : Verify the operating system routinely checks the baseline configuration for unauthorized changes and notifies the system administrator when anomalies in the operation of any security functions are discovered.
+
+# Check that RHEL 8 routinely executes a file integrity scan for changes to the system baseline. The command used in the example will use a daily occurrence.
+
+# Check the cron directories for scripts controlling the execution and notification of results of the file integrity application. For example, if AIDE is installed on the system, use the following commands:
+
+# 1. AIDE is installed,
+# 2. A scheduled scan runs (via cron),
+# 3. And notifications are sent, typically using mail.
+
+
+check_v_230263 () {
+    local finding=0
+
+    if ! rpm -q aide ; then
+        echo "Aide NOT INSTALLED"
+        exit 1
+    fi
+
+    if ! grep -q "/usr/sbin/aide" /etc/crontab /var/spool/cron/root 2>/dev/null && \
+   ! grep -qr "/usr/sbin/aide" /etc/cron.daily/ /etc/cron.weekly/ 2>/dev/null; then
+    echo "❌ No scheduled AIDE job found"
+    exit 1
+fi
+
+# 3. Notification must exist (look for 'mail' in the script or crontab)
+    if ! grep -q "mail" /etc/cron.daily/aide 2>/dev/null && ! grep -q "/bin/mail" /etc/crontab /var/spool/cron/root 2>/dev/null; then
+        echo "❌ No mail notification for AIDE check found"
+        exit 1
+    fi
+
+
+}
