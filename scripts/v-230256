@@ -34,7 +34,7 @@ check_v_230256 () {
         fi
     done
 
-    if [ "$finding" -eq 0]; then
+    if [ "$finding" -eq 0 ]; then
         exit 0
     else
         exit 1
