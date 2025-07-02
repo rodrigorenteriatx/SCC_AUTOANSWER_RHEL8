@@ -10,7 +10,7 @@ check_v_230251() {
 
     if [[ ! -f "$file" ]]; then
         echo "FILE NOT FOUND: $file"
-        return
+        exit 1
     fi
 
     # Use awk to find and extract MACs
