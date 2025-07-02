@@ -28,7 +28,7 @@ check_v_230256 () {
 
 
     for v in "${VERSIONS[@]}"; do
-        if ! grep -qE "$v" "$file" ; then
+        if ! grep -qF "$v" "$file" ; then
             echo "MISSING:  $v"
             finding=1
         fi
