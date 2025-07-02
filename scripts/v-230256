@@ -28,6 +28,7 @@ check_v_230256 () {
 
 
     for v in "${VERSIONS[@]}"; do
+        #Each entry begins with - , making greap treat it as an optoin, -- will tell grep, not to treat anything after it as an option"
         if ! grep -qF  -- "$v" "$file" ; then
             echo "MISSING:  $v"
             finding=1
