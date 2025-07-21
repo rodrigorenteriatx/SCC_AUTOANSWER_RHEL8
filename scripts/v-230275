@@ -11,6 +11,7 @@ check_v_230275 () {
         if ! opensc-tool --list-drivers | grep -i piv; then
             echo "PIV Driver not found"
             finding=1
+        fi
     else
         finding=1
     fi
