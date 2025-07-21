@@ -21,6 +21,7 @@ check_v_230274 () {
         echo "OSCP Disabled or not using proper digest value"
     else
         echo "OSCP enabled, using the proper digest value"
+    fi
 
     exit "$finding"
 }
