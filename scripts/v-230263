@@ -28,8 +28,8 @@ check_v_230263 () {
 # in a closed area uually no mail
 
     if ! grep "mail" /etc/cron.daily/aide && ! grep "/bin/mail" /etc/crontab /var/spool/cron/root ; then
+        finding=1
         echo "No mail notification for AIDE check found"
-        exit 1
     fi
 
     if [ "$finding" -eq 0 ]; then
