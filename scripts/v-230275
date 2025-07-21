@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# This STIG rule ensures that RHEL 8 systems are capable of accepting PIV (Personal Identity Verification) credentials, which are required for DoD and federal smart card authentication (e.g., CAC cards).
+
+#1061
+
+check_v_230275 () {
+    local finding=0
+
+    if yum list installed opensc; then
+        opensc-tool --list-drivers | grep -i piv || echo "PIV Driver not found" && finding=1
+    else
+        finding=1
+    fi
+
+    exit "$finding"
+}
+
+check_v_230275
