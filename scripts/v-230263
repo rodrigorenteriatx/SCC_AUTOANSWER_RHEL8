@@ -27,7 +27,7 @@ check_v_230263 () {
 # 3. Notification must exist, but in this case we will use splunk
 # in a closed area uually no mail
 
-    if ! grep "mail" /etc/cron.daily/aide && ! grep"/bin/mail" /etc/crontab /var/spool/cron/root ; then
+    if ! grep "mail" /etc/cron.daily/aide && ! grep "/bin/mail" /etc/crontab /var/spool/cron/root ; then
         echo "No mail notification for AIDE check found"
         exit 1
     fi
