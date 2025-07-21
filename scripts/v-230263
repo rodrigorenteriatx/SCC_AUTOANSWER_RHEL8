@@ -19,7 +19,7 @@ check_v_230263 () {
         exit 1
     fi
 
-    if ! grep -q "/usr/sbin/aide" /etc/crontab /var/spool/cron/root && ! grep -qr "/usr/sbin/aide" /etc/cron.daily/ /etc/cron.weekly/ ; then
+    if ! grep "/usr/sbin/aide" /etc/crontab /var/spool/cron/root && ! grep -r "/usr/sbin/aide" /etc/cron.daily/ /etc/cron.weekly/ ; then
     echo "No scheduled AIDE job found"
     exit 1
 fi
@@ -27,9 +27,10 @@ fi
 # 3. Notification must exist, but in this case we will use splunk
 # in a closed area uually no mail
 
-    if ! grep -q "mail" /etc/cron.daily/aide 2>/dev/null && ! grep -q "/bin/mail" /etc/crontab /var/spool/cron/root 2>/dev/null; then
+    if ! grep "mail" /etc/cron.daily/aide && ! grep"/bin/mail" /etc/crontab /var/spool/cron/root ; then
         echo "No mail notification for AIDE check found"
         exit 1
     fi
 
 }
+check_v_230263
