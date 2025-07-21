@@ -8,7 +8,9 @@ check_v_230275 () {
     local finding=0
 
     if yum list installed opensc; then
-        opensc-tool --list-drivers | grep -i piv || echo "PIV Driver not found" && finding=1
+        if ! opensc-tool --list-drivers | grep -i piv; then
+            echo "PIV Driver not found"
+            finding=1
     else
         finding=1
     fi
