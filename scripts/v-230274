@@ -1,0 +1,26 @@
+#!/bin/bash
+#1041
+# RULE             : RHEL 8 must implement certificate status checking for multifactor authentication.
+# QUESTION_TEXT    : Verify the operating system implements certificate status checking for multifactor authentication.
+
+# Note: If the System Administrator demonstrates the use of an approved alternate multifactor authentication method, this requirement is not applicable.
+
+# Check to see if Online Certificate Status Protocol (OCSP) is enabled and using the proper digest value on the system with the following command:
+
+# $ sudo grep certificate_verification /etc/sssd/sssd.conf /etc/sssd/conf.d/*.conf | grep -v "^#"
+
+# certificate_verification = ocsp_dgst=sha1
+
+# If the certificate_verification line is missing from the [sssd] section, or is missing "ocsp_dgst=sha1", ask the administrator to indicate what type of multifactor authentication is being utilized and how the system implements certificate status checking.  If there is no evidence of certificate status checking being used, this is a finding.
+
+check_v_230274 () {
+    finding=0
+
+    if ! (certificate_verification /etc/sssd/sssd.conf /etc/sssd/conf.d/*.conf | grep -v "^#") ;then
+        finding=1
+        echo "OSCP Disabled or not using proper digest value"
+    fi
+
+    exit "$finding"
+}
+check_v_230274
