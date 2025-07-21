@@ -16,7 +16,7 @@
 check_v_230274 () {
     finding=0
 
-    if ! (certificate_verification /etc/sssd/sssd.conf /etc/sssd/conf.d/*.conf | grep -v "^#") ;then
+    if ! (grep certificate_verification /etc/sssd/sssd.conf /etc/sssd/conf.d/*.conf | grep -v "^#") ;then
         finding=1
         echo "OSCP Disabled or not using proper digest value"
     fi
