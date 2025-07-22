@@ -22,7 +22,7 @@ check_v_230303 () {
         case "$fs_type" in
             vfat|ntfs|iso9660|udf|exfat)
                 if [[ "$options" != *nodev* ]]; then
-                    echo "❌ $mount_point ($fs_type) missing nodev"
+                    echo "$mount_point ($fs_type) missing nodev"
                     finding=1
                 fi
                 ;;
