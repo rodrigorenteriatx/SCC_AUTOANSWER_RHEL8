@@ -25,7 +25,7 @@ check_v_230304 () {
         case "$fs_type" in
             vfat|ntfs|iso9660|udf|exfat)
                 if [[ "$options" != *noexec* ]]; then
-                    echo "$mount_point ($fs_type) missing nodev"
+                    echo "$mount_point ($fs_type) missing noexec"
                     finding=1
                 fi
                 ;;
