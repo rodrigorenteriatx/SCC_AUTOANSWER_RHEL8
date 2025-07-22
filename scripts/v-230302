@@ -29,6 +29,7 @@ check_v_230302 () {
     local finding=0
 
     mounts=$(mount -t nfs,nfs4,nfs3 | grep home)
+    echo "$mounts"
 
     finding=$(echo "$mounts" | grep noexec)
 
