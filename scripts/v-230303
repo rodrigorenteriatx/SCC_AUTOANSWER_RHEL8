@@ -1,0 +1,34 @@
+#!/bin/bash
+
+#  RHEL 8 must prevent special devices on file systems that are used with removable media.
+# QUESTION_TEXT    : Verify file systems that are used for removable media are mounted with the "nodev" option with the following command:
+
+# $ sudo more /etc/fstab
+
+# UUID=2bc871e4-e2a3-4f29-9ece-3be60c835222 /mnt/usbflash vfat noauto,owner,ro,nosuid,nodev,noexec 0 0
+
+# If a file system found in "/etc/fstab" refers to removable media and it does not have the "nodev" option set, this is a finding.
+
+check_v_230303 () {
+    local finding=0
+    while read -r line; do
+        # Skip comments and empty lines
+        [[ "$line" =~ ^#.*$ || -z "$line" ]] && continue
+
+        fs_type=$(echo "$line" | cut -d' ' -f3)
+        mount_point=$(echo "$line" | cut -d' ' -f2)
+        options=$(echo "$line" | cut -d' ' -f4)
+
+        case "$fs_type" in
+            vfat|ntfs|iso9660|udf|exfat)
+                if [[ "$options" != *nodev* ]]; then
+                    echo "❌ $mount_point ($fs_type) missing nodev"
+                    finding=1
+                fi
+                ;;
+        esac
+    done < /etc/fstab
+    exit $finding
+}
+
+check_v_230303
