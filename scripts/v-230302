@@ -28,10 +28,9 @@ check_v_230302 () {
 
     local finding=0
 
-    mounts=$(mount -t nfs,nfs4,nfs3)
+    mounts=$(mount -t nfs,nfs4,nfs3 | grep home)
 
-
-    finding=$(echo "$mounts" | awk '$3 ~ "^/home/" && $0 !~ /noexec/ { print "1" }')
+    finding=$(mounts | grep noexec)
 
     if [ "$finding" == "1" ];then
         echo "HOME  dirs MISSING NOEXEC (NFS)"
