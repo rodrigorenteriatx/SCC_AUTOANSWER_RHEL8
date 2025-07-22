@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# 1621
+# RULE             : RHEL 8 must prevent files with the setuid and setgid bit set from being executed on file systems that are used with removable media.
+# QUESTION_TEXT    : Verify file systems that are used for removable media are mounted with the "nosuid" option with the following command:
+
+# $ sudo more /etc/fstab
+
+# UUID=2bc871e4-e2a3-4f29-9ece-3be60c835222 /mnt/usbflash vfat noauto,owner,ro,nosuid,nodev,noexec 0 0
+
+# If a file system found in "/etc/fstab" refers to removable media and it does not have the "nosuid" option set, this is a finding.
+
+check_v_230305 () {
+    local finding=0
+    echo "Checking /etc/fstab for removable media : nosuid"
+    while read -r line; do
+        # Skip comments and empty lines
+        [[ "$line" =~ ^#.*$ || -z "$line" ]] && continue
+
+        fs_type=$(echo "$line" | cut -d' ' -f3)
+        mount_point=$(echo "$line" | cut -d' ' -f2)
+        options=$(echo "$line" | cut -d' ' -f4)
+
+        case "$fs_type" in
+            vfat|ntfs|iso9660|udf|exfat)
+                if [[ "$options" != *nosuid* ]]; then
+                    echo "$mount_point ($fs_type) missing nosuid"
+                    finding=1
+                fi
+                ;;
+        esac
+    done < /etc/fstab
+    exit $finding
+}
+
+check_v_230305
