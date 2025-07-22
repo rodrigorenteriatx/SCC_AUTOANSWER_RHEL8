@@ -33,7 +33,7 @@ check_v_230302 () {
 
     finding=$(echo "$mounts" | awk '$3 ~ "^/home/" && $0 !~ /noexec/ { print "1" }')
 
-    if [ $finding -eq 1 ];then
+    if [ "$finding" == "1" ];then
         echo "HOME  dirs MISSING NOEXEC (NFS)"
     fi
 
