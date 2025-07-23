@@ -120,4 +120,7 @@ for qid in "${!RESULTS[@]}"; do
     update_answer "$qid" "${RESULTS[$qid]}" "${COMMENTS["$qid"]}"
 
 done
+#Need to change ownerships and permissions of RESULTS dir and files inside
+#May need to set group to ISSO (644), Mostly meant for admin to use to remediate or for SCAP SCAN
+
 echo "Done. Updated AUTOANSWER file: $OUTPUT_FILE"
