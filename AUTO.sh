@@ -1,7 +1,9 @@
 #!/bin/bash
+#RESULTS DIRECTORY
+#"RESULTS"
 
 INPUT_FILE="RHEL_8_STIG_2.2.12_Autoanswer.txt"
-OUTPUT_FILE="RHEL_8_STIG_2.2.12_Autoanswer.completed.txt"
+OUTPUT_FILE="./RESULTS/RHEL_8_STIG_2.2.12_Autoanswer.COMPLETED.txt"
 cp "$INPUT_FILE" "$OUTPUT_FILE"
 
 
@@ -41,7 +43,7 @@ RESET='\e[0m'
 # Evaluate results
 # --------------------------
 
-OUTPUT_LOG="detailed_summary.txt"
+OUTPUT_LOG="./RESULTS/detailed_summary.txt"
 > "$OUTPUT_LOG"
 
 for qid in "${ORDERED_KEYS[@]}"; do
