@@ -34,10 +34,12 @@ check_v_230309 () {
     done <<< "$fs"
     #<<< , OPERATOR CALLED "HERE STRING" allows you t pass a string drectly into standard input of a command o loop, like if it were comming from a file or pipe
 
-    if [ -f $WWFILE ]; then
+    #check if file is ECMPTY, run a size check?
+    if [ -s $WWFILE ]; then
         finding=1
         fullpath=$(realpath $WWFILE)
         echo "Please see: $fullpath for list of WORLD WRITABLE FILES"
+        echo "Possible fix: xargs -a $fullpath -I{} chmod o-w {} "
 
     fi
 
