@@ -22,6 +22,8 @@ check_v_230309 () {
     local finding=0
     local WWFILE="RESULTS/WWFILES.$(date +%Y-%m-%d)"
     local dir=$(pwd)
+    #this creates the file at SIZE 0!!!
+    #Better than echo '' > file , which creates at size 1
     > $WWFILE
     #local partitions/filesystems
     fs=$(findmnt -D -t notmpfs,devtmpfs,bpf,none,selinuxfs,iso9660,tracefs | awk 'NR>1 {print $7 }')
