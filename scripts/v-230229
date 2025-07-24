@@ -3,7 +3,7 @@
 check_v_230229 () {
     local finding=0
     #CHECK config.sh for USE_PKI , SET IF APPLICABLE
-    if ! $USE_PKI; then
+    if "$USE_PKI" == "true" ; then
         echo -e "NOT APPLICABLE\nNOT USING PKI BASED AUTHENTICATION"
         exit $finding
     fi
