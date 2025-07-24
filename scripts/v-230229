@@ -19,6 +19,8 @@ check_v_230229 () {
 
     exit $finding
 }
+
+check_v_230229
 #
 
 #OUTPUT
