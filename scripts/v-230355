@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# ; 2541
+# ; RULE             : RHEL 8 must map the authenticated identity to the user or group account for PKI-based authentication.
+# ; QUESTION_TEXT    : Verify the certificate of the user or group is mapped to the corresponding user or group in the "sssd.conf" file with the following command:
+
+# ; Note: If the System Administrator demonstrates the use of an approved alternate multifactor authentication method, this requirement is not applicable.
+
+# ; $ sudo cat /etc/sssd/sssd.conf
+
+# ; [sssd]
+# ; config_file_version = 2
+# ; services = pam, sudo, ssh
+# ; domains = testing.test
+
+# ; [pam]
+# ; pam_cert_auth = True
+
+# ; [domain/testing.test]
+# ; id_provider = ldap
+
+# ; [certmap/testing.test/rule_name]
+# ; matchrule =<SAN>.*EDIPI@mil
+# ; maprule = (userCertificate;binary={cert!bin})
+# ; domains = testing.test
+
+# ; If the certmap section does not exist, ask the System Administrator to indicate how certificates are mapped to accounts. If there is no evidence of certificate mapping, this is a finding.
+
+check_v_230355 () {
+    local finding=0
+
+    if
+}

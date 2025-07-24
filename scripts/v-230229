@@ -1,13 +1,8 @@
 #!/bin/bash
 
 check_v_230229 () {
-    local finding=0
+    local finding=$(check_PKI)
     #CHECK config.sh for USE_PKI , SET IF APPLICABLE
-    if [ "$USE_PKI" == "false" ]; then
-        echo -e "NOT APPLICABLE\nNOT USING PKI BASED AUTHENTICATION"
-        finding=2
-        return $finding
-    fi
 
     if [ -f /etc/sssd/pki/sssd_auth_ca_db.pem ]; then
         echo "FILE EXISTS"
