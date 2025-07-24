@@ -8,7 +8,6 @@ check_v_230229 () {
         exit $finding
     fi
 
-
     if [ -f /etc/sssd/pki/sssd_auth_ca_db.pem ]; then
         echo "FILE EXISTS"
     else
