@@ -1,6 +1,8 @@
 #!/bin/bash
 #RESULTS DIRECTORY
 #"RESULTS"
+
+#CONTAINS VARS FOR ACCURATE ANSWERING (PKI, CENTRIFY, ETC)
 source ./config.sh
 
 INPUT_FILE="RHEL_8_STIG_2.2.12_Autoanswer.txt"
