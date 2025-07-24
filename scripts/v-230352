@@ -21,9 +21,9 @@ check_v_230352 () {
         finding=1
         echo "Create the following entry in /etc/dconf/local.d/00-session"
         cat <<EOF
-        [org/gnome/desktop/session]
-        idle-delay=uint32 900
-        EOF
+[org/gnome/desktop/session]
+idle-delay=uint32 900
+EOF
 
     fi
 
