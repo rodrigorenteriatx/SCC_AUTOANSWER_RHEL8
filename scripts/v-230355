@@ -27,7 +27,9 @@
 # ; If the certmap section does not exist, ask the System Administrator to indicate how certificates are mapped to accounts. If there is no evidence of certificate mapping, this is a finding.
 
 check_v_230355 () {
-    local finding=0
+    #check config.sh for function
+    check_SSSD
+    local finding=$?
 
     if
 }
