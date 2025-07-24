@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# 1861
+# RULE             : Executable search paths within the initialization files of all local interactive RHEL 8 users must only contain paths that resolve to the system default or the users home directory.
+# QUESTION_TEXT    : Verify that all local interactive user initialization file executable search path statements do not contain statements that will reference a working directory other than user home directories with the following commands:
+
+# $ sudo grep -i path= /home/*/.*
+
+# /home/[localinteractiveuser]/.bash_profile:PATH=$PATH:$HOME/.local/bin:$HOME/bin
+
+# If any local interactive user initialization files have executable search path statements that include directories outside of their home directory and is not documented with the ISSO as an operational requirement, this is a finding.
+
+

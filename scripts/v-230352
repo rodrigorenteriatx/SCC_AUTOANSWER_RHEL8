@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# 2501
+# RULE             : RHEL 8 must automatically lock graphical user sessions after 15 minutes of inactivity.
+# QUESTION_TEXT    : Verify the operating system initiates a session lock after a 15-minute period of inactivity for graphical user interfaces with the following commands:
+
+# This requirement assumes the use of the RHEL 8 default graphical user interface, Gnome Shell. If the system does not have any graphical user interface installed, this requirement is Not Applicable.
+
+# $ sudo gsettings get org.gnome.desktop.session idle-delay
+
+# uint32 900
+
+# If "idle-delay" is set to "0" or a value greater than "900", this is a finding.
+
+check_v_230352 () {
+    local finding=0
+    setting="$(gsettings get org.gnome.desktop.session idle-delay)"
+
+    if ! grep 'unit32 900' "$setting" ; then
+        finding=1
+    fi
+    echo "IDLE-DELAY = $setting"
+
+    exit $finding
+
+}
+
+check_v_230352

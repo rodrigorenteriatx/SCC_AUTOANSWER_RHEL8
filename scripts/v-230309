@@ -17,6 +17,7 @@
 # $ sudo grep <file> /home/*/.*
 
 # If any local initialization files are found to reference world-writable files, this is a finding.
+################################################
 
 check_v_230309 () {
     local finding=0
@@ -52,3 +53,4 @@ check_v_230309 () {
 }
 
 check_v_230309
+
