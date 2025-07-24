@@ -6,6 +6,7 @@ if [ -f /etc/sssd/pki/sssd_auth_ca_db.pem ] && grep -Ei 'certificate_verificatio
     ##Rule 161 - scripts/v-230229
 else
     USE_SSSD=false
+fi
 
 #CHECK IF SSSD IS BEING ACTIVELY USED
 if systemctl is-enabled sssd && systemctl is-active; then
@@ -13,6 +14,7 @@ if systemctl is-enabled sssd && systemctl is-active; then
     #Rule 1041 - scripts/v-230274
 else
     USE_SSSD=false
+fi
 
 USE_CENTRIFY=true
 #
