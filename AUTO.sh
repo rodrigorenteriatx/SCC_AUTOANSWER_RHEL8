@@ -1,7 +1,7 @@
 #!/bin/bash
 #RESULTS DIRECTORY
 #"RESULTS"
-echo "$(pwd)"
+source ./config.sh
 
 INPUT_FILE="RHEL_8_STIG_2.2.12_Autoanswer.txt"
 OUTPUT_FILE="RESULTS/RHEL_8_STIG_2.2.12_Autoanswer.COMPLETED.txt"
