@@ -1,7 +1,9 @@
 #!/bin/bash
 
 check_v_230229 () {
-    local finding=$(check_PKI)
+    check_SSSD
+    local finding=$?
+    [ $finding -eq 2 ] && return $finding
     #CHECK config.sh for USE_PKI , SET IF APPLICABLE
 
     if [ -f /etc/sssd/pki/sssd_auth_ca_db.pem ]; then
