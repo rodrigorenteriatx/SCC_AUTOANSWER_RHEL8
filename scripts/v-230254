@@ -12,7 +12,7 @@ check_v_230254() {
 
     if [ ! -f "$openssl_file" ]; then
         echo "Missing $openssl_file"
-        exit 1
+        finding=1
     fi
 
     if grep -Fq "$expected_include" "$openssl_file"; then
@@ -33,12 +33,7 @@ check_v_230254() {
         finding=1
     fi
 
-    # Final result
-    if [[ $finding -eq 0 ]]; then
-        exit 0
-    else
-        exit 1
-    fi
+    return $finding
 }
 
 check_v_230254

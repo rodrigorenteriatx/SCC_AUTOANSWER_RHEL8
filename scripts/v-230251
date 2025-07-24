@@ -4,13 +4,14 @@
 # QUESTION_ID: ocil:navy.navwar.niwcatlantic.scc.rhel8os:question:581
 
 check_v_230251() {
+    local finding=0
     local file="/etc/crypto-policies/back-ends/opensshserver.config"
     local expected="hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512,hmac-sha2-256"
     local actual
 
     if [[ ! -f "$file" ]]; then
         echo "FILE NOT FOUND: $file"
-        exit 1
+        finding=1
     fi
 
     # Use awk to find and extract MACs
@@ -46,15 +47,15 @@ check_v_230251() {
         echo "$actual"
         echo "Expected:"
         echo "$expected"
-        exit 0
     else
         echo "INCORRECT OF MISSING."
         echo "Found:"
         echo "$actual"
         echo "Expected:"
         echo "$expected"
-        exit 1
     fi
+
+    return $finding
 }
 
 check_v_230251

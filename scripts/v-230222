@@ -1,16 +1,24 @@
 #!/bin/bash
-cutoff=$(date -d '-30 days' +%Y-%m-%d)
-echo "CUTOFF $cutoff"
 
-while IFS='|' read -r id cmd d _; do
-   clean_date=$(echo "$d" | xargs)
-   if [[ "$clean_date" > "$cutoff" || "$clean_date" == "$cutoff" ]]; then
-      echo "LAST UPDATED: $clean_date"
-      exit 0
-   fi
-done < <(yum history | grep update | tee /dev/stderr )
-#Process substitution
-#acts like a file
-# <(yum history | grep update)
-# done < /dev/fd/63
-exit 1
+check_v_230222 () {
+   local finding=0
+   cutoff=$(date -d '-30 days' +%Y-%m-%d)
+   echo "CUTOFF $cutoff"
+
+   while IFS='|' read -r id cmd d _; do
+      clean_date=$(echo "$d" | xargs)
+      if [[ "$clean_date" > "$cutoff" || "$clean_date" == "$cutoff" ]]; then
+         echo "LAST UPDATED: $clean_date"
+      else
+         finding=1
+      fi
+   done < <(yum history | grep update | tee /dev/stderr )
+   #Process substitution
+   #acts like a file
+   # <(yum history | grep update)
+   # done < /dev/fd/63
+   return $finding
+
+}
+
+check_v_230222

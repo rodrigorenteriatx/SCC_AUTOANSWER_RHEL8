@@ -22,7 +22,7 @@
 check_v_230309 () {
     local finding=0
     local WWFILE="RESULTS/WWFILES.$(date +%Y-%m-%d)"
-    local dir=$(pwd)
+    # local dir=$(pwd)
     #this creates the file at SIZE 0!!!
     #Better than echo '' > file , which creates at size 1
     > $WWFILE
@@ -46,11 +46,10 @@ check_v_230309 () {
 
     fi
 
-    exit $finding
+    return $finding
 
 
 
 }
 
 check_v_230309
-

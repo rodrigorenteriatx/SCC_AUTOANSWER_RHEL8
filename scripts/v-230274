@@ -23,6 +23,6 @@ check_v_230274 () {
         echo "OSCP enabled, using the proper digest value"
     fi
 
-    exit "$finding"
+    return $finding
 }
 check_v_230274

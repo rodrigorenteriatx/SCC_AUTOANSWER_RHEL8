@@ -26,8 +26,8 @@ check_v_230263 () {
     fi
 
     if ! grep "/usr/sbin/aide" /etc/crontab /var/spool/cron/root && ! grep -r "/usr/sbin/aide" /etc/cron.daily/ /etc/cron.weekly/ ; then
-    echo "No scheduled AIDE job found"
-    finding=1
+        echo "No scheduled AIDE job found"
+        finding=1
     else
         echo "Scheduled AIDE job found"
     fi
@@ -42,11 +42,7 @@ check_v_230263 () {
     #     echo "No mail notification for AIDE check found"
     # fi
 
-    if [ "$finding" -eq 0 ]; then
-        exit 0
-    else
-        exit 1
-    fi
+    return $finding
 
 }
 check_v_230263

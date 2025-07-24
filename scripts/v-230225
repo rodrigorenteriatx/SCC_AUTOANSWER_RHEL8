@@ -3,6 +3,20 @@
 #If it find it it will exit with 0
 #but regardlesss comments should output
 # outputs the /etc/issue file AND it checks that the Banner is in /etc/ssh/sshd_config
-cat /etc/issue
 
-grep -i "^[[:space:]]*Banner[[:space:]]" /etc/ssh/sshd_config | grep -v "^#" | grep /etc/issue && grep -Fq "You are accessing a U.S. Government (USG) Information System" /etc/issue
+check_v_230225 () {
+    local finding=1
+    echo -e "Checking for Banner\n"
+    cat /etc/issue
+
+    if grep -i "^[[:space:]]*Banner[[:space:]]" /etc/ssh/sshd_config | grep -v "^#" | grep /etc/issue; then
+        if grep -Fq "You are accessing a U.S. Government (USG) Information System" /etc/issue; then
+            finding=0
+        fi
+    fi
+
+    return $finding
+
+}
+
+check_v_230225

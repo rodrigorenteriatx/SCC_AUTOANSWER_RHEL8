@@ -54,11 +54,7 @@ check_v_230230() {
 
     rm -f /tmp/v230230.homes
 
-    if [[ $finding -eq 1 ]]; then
-        exit 0
-    else
-        exit 1
-    fi
+    return $finding
 }
 
 # Execute the check

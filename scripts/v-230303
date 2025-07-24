@@ -29,7 +29,7 @@ check_v_230303 () {
                 ;;
         esac
     done < /etc/fstab
-    exit $finding
+    return $finding
 }
 
 check_v_230303

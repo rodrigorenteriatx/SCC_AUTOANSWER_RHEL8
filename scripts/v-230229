@@ -6,19 +6,19 @@ check_v_230229 () {
     echo "$USE_PKI"
     if [ "$USE_PKI" == "false" ]; then
         echo -e "NOT APPLICABLE\nNOT USING PKI BASED AUTHENTICATION"
-        exit $finding
+        return $finding
     fi
 
     if [ -f /etc/sssd/pki/sssd_auth_ca_db.pem ]; then
         echo "FILE EXISTS"
     else
         echo "FILE NOT FOUND"
-        exit 1
+        return 1
     fi
 
     openssl x509 -in /etc/sssd/pki/sssd_auth_ca_db.pem -noout -issuer -subject -enddate 2>/dev/null | grep -i "dod root" || echo "DOD ROOT NOT FOUND" && finding=1
 
-    exit $finding
+    return $finding
 }
 
 check_v_230229

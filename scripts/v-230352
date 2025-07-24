@@ -12,9 +12,10 @@
 
 # If "idle-delay" is set to "0" or a value greater than "900", this is a finding.
 
-fix_text="[org/gnome/desktop/session]\nidle-delay=uint32 900\nThen run 'dconf update'"
+
 
 check_v_230352 () {
+    local fix_text="[org/gnome/desktop/session]\nidle-delay=uint32 900\nThen run 'dconf update'"
     local finding=0
     setting="$(gsettings get org.gnome.desktop.session idle-delay)"
     echo -e "IDLE-DELAY = $setting\n"
@@ -26,7 +27,7 @@ check_v_230352 () {
 
     fi
 
-    exit $finding
+    return $finding
 
 }
 

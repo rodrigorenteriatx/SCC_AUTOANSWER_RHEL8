@@ -37,7 +37,7 @@ check_v_230302 () {
         echo "HOME  dirs MISSING NOEXEC (NFS)"
     fi
 
-    exit $finding
+    return $finding
 
 
 }

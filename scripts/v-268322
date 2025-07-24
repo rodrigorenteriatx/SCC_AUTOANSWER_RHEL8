@@ -1,4 +1,12 @@
 #!/bin/bash
 #will also ouput to comments correctly
 # IF OUTPUT IS PRODUCED IT IS A FINDING
-sudo grep -i nullok /etc/pam.d/system-auth && exit 1 || cat /etc/pam.d/system-auth && exit 0
+
+check_v_268322 () {
+    #Too short to set finding local var
+
+    sudo grep -i nullok /etc/pam.d/system-auth && return 1 || cat /etc/pam.d/system-auth && return 0
+
+}
+
+check_v_268322

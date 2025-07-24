@@ -1,11 +1,18 @@
 #!/bin/bash
 #necessary to output for comments
-lsblk
-for d in $(lsblk -lnpo NAME,TYPE | awk '$2=="part"{print $1}'); do
-    mountpoint=$(lsblk -npo MOUNTPOINT "$d" | head -n1)
-    [[ "$mountpoint" == "/boot" || "$mountpoint" == "/boot/efi" ]] && continue
-    blkid "$d" | grep -q 'TYPE="crypto_LUKS"' || exit 1
-done
+
+check_v_230224 () {
+    local finding=0
+
+    lsblk
+    for d in $(lsblk -lnpo NAME,TYPE | awk '$2=="part"{print $1}'); do
+        mountpoint=$(lsblk -npo MOUNTPOINT "$d" | head -n1)
+        [[ "$mountpoint" == "/boot" || "$mountpoint" == "/boot/efi" ]] && continue
+        blkid "$d" | grep -q 'TYPE="crypto_LUKS"' || finding=1
+    done
 
 
-exit 0
+    return $finding
+}
+
+check_v_230224

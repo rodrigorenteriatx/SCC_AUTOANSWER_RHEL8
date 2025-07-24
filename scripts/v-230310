@@ -24,7 +24,7 @@ check_v_230310 () {
         finding=1
     fi
 
-    exit $?
+    return $finding
 }
 
 
