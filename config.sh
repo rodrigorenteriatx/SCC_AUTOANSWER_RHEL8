@@ -6,3 +6,5 @@ USE_PKI=false
 USE_CENTRIFY=true
 #
 USE_AUTOFS=true
+
+USE_SSSD=false
