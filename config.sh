@@ -11,7 +11,7 @@ USE_SSSD=false
 
 check_PKI () {
     if [ "$USE_PKI" == "false" ]; then
-        echo -e "NOT APPLICABLE\nNOT USING PKI BASED AUTHENTICATION"
+        echo "NOT APPLICABLE: NOT USING PKI BASED AUTHENTICATION"
         return 2
     fi
     return 0
@@ -19,7 +19,7 @@ check_PKI () {
 
 check_SSSD () {
     if [ "$USE_PKI" == "false" ]; then
-        echo -e "NOT APPLICABLE\nNOT USING SSSD BASED AUTHENTICATION"
+        echo "NOT APPLICABLE: NOT USING SSSD BASED AUTHENTICATION"
         return 2
     fi
     return 0
