@@ -5,7 +5,7 @@ if [ -f /etc/sssd/pki/sssd_auth_ca_db.pem ] && grep -Ei 'certificate_verificatio
     USE_PKI=true
     ##Rule 161 - scripts/v-230229
 else
-    USE_SSSD=false
+    USE_PKI=false
 fi
 
 #CHECK IF SSSD IS BEING ACTIVELY USED
