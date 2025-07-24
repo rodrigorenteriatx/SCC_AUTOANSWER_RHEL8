@@ -16,7 +16,7 @@ check_v_230352 () {
     local finding=0
     setting="$(gsettings get org.gnome.desktop.session idle-delay)"
 
-    if ! grep 'unit32 900' "$setting" ; then
+    if ! grep 'uint32 900' <<<"$setting" ; then
         finding=1
     fi
     echo "IDLE-DELAY = $setting"
