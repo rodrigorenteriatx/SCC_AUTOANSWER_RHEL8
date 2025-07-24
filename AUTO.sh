@@ -70,6 +70,7 @@ for qid in "${ORDERED_KEYS[@]}"; do
     #1. output rule/vnum first, 2. output from script to COMMENTS AND THE OUTPU_LOG3. ------- at then end
     echo "[$qid] $vnum - $script" | tee -a "$OUTPUT_LOG"
     echo "$script_output" | tee -a "$OUTPUT_LOG"
+    echo
     echo "RESULT: ${RESULTS["$qid"]}" | tee -a "$OUTPUT_LOG"
     echo "------------------------------------------" | tee -a "$OUTPUT_LOG"
     echo "##########################################" | tee -a "$OUTPUT_LOG"

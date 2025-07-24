@@ -22,7 +22,7 @@ check_v_230352 () {
     if ! grep 'uint32 900' <<<"$setting" ; then
         finding=1
         echo -e "Create the following entry in /etc/dconf/local.d/00-session\n"
-        echo -e "$fix_text\n"
+        echo -e "$fix_text"
 
     fi
 
