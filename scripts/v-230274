@@ -14,6 +14,7 @@
 # If the certificate_verification line is missing from the [sssd] section, or is missing "ocsp_dgst=sha1", ask the administrator to indicate what type of multifactor authentication is being utilized and how the system implements certificate status checking.  If there is no evidence of certificate status checking being used, this is a finding.
 
 check_v_230274 () {
+    #Function found in config.sh
     local finding=$(check_SSSD)
 
     if ! (grep certificate_verification /etc/sssd/sssd.conf /etc/sssd/conf.d/*.conf | grep -v "^#") ;then
