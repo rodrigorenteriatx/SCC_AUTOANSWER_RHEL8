@@ -59,12 +59,32 @@ for qid in "${ORDERED_KEYS[@]}"; do
         continue
     fi
 
+    #0 = Not a Finding
+    #1 = Finding
+    #2 = Not Applicable
+    script_output=$(source "${script}" 2>&1)
+    exit_code=$?
 
-    if script_output=$(source "${script}" 2>&1); then
-        RESULTS["$qid"]="Not a Finding"
-    else
-        RESULTS["$qid"]="Finding"
-    fi
+
+    case "$exit_code" in
+        "0")
+            RESULTS["$qid"]="Not a Finding"
+            ;;
+        "1")
+            RESULTS["$qid"]="Finding"
+            ;;
+        "2")
+            RESULTS["$qid"]="Not Applicable"
+            ;;
+    esac
+
+
+    # if [ exit_code -eq 0 ]; then
+    #     RESULTS["$qid"]="Not a Finding"
+    # elif
+    # else
+    #     RESULTS["$qid"]="Finding"
+    # fi
 
     #OUTPUT FROM EACH COMMAND WILL ALSO BE STORED HERE, MEANT FOR THE AUTOANSWER.TXT
     #THE FOLLOWING OUTPUT AFTER, WILL NOT BE INCLUDED BUT WILL BE USED TO FORMAT THE detailed_summary.txt which will CLEANLY mirror the AUTOANSWER.txt
