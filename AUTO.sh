@@ -3,7 +3,6 @@
 #"RESULTS"
 
 #CONTAINS VARS FOR ACCURATE ANSWERING (PKI, CENTRIFY, ETC)
-source ./config.sh
 
 INPUT_FILE="RHEL_8_STIG_2.2.12_Autoanswer.txt"
 OUTPUT_FILE="RESULTS/RHEL_8_STIG_2.2.12_Autoanswer.COMPLETED.txt"
@@ -49,6 +48,8 @@ RESET='\e[0m'
 OUTPUT_LOG="RESULTS/detailed_summary.txt"
 > "$OUTPUT_LOG"
 
+source config.sh
+
 for qid in "${ORDERED_KEYS[@]}"; do
     script="${CHECK_COMMANDS[$qid]}"
     vnum="${VNUMBERS["$qid"]}"
@@ -59,7 +60,7 @@ for qid in "${ORDERED_KEYS[@]}"; do
     fi
 
 
-    if script_output=$(bash "${script}" 2>&1); then
+    if script_output=$(source "${script}" 2>&1); then
         RESULTS["$qid"]="Not a Finding"
     else
         RESULTS["$qid"]="Finding"
