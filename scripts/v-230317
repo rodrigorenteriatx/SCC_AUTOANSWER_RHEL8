@@ -15,7 +15,7 @@ check_v_230317 () {
 
 
     local finding=0
-    initfile=(.bash_profile .bashrc .profile .csh .cshrc)
+    initfiles=(.bash_profile .bashrc .profile .csh .cshrc)
 
     adquery user | awk -F : '{print $1}' | while read -r user; do
         homedir=$(getent passwd "$user" | cut -d : -f 6)
