@@ -11,7 +11,10 @@
 # If any local interactive user initialization files have executable search path statements that include directories outside of their home directory and is not documented with the ISSO as an operational requirement, this is a finding.
 
 check_v_230317 () {
-    finding=1
+
+
+
+    local finding=0
     initfile=(.bash_profile .bashrc .profile .csh .cshrc)
 
     adquery user | awk -F : '{print $1}' | while read -r user; do
@@ -23,11 +26,14 @@ check_v_230317 () {
                 echo "Checking homedir of $user"
                 grep -i path= "$fpath"
                 if [ $? -eq 0 ]; then
-                    echo "user has exec search path not referencing homedir"
+                    echo "PATH reference found"
+                    finding=1
                 fi
             fi
         done
     done
+
+    return $finding
 
 }
 check_v_230317
