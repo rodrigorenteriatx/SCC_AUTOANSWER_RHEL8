@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# 2861
+# RULE             : RHEL 8 must implement smart card logon for multifactor authentication for access to interactive accounts.
+# QUESTION_TEXT    : Verify RHEL 8 uses multifactor authentication for local access to accounts.
+
+# Note: If the System Administrator demonstrates the use of an approved alternate multifactor authentication method, this requirement is not applicable.
+
+# Check that the "pam_cert_auth" setting is set to "true" in the "/etc/sssd/sssd.conf" file.
+
+# Check that the "try_cert_auth" or "require_cert_auth" options are configured in both "/etc/pam.d/system-auth" and "/etc/pam.d/smartcard-auth" files with the following command:
+
+#      $ sudo grep -ir cert_auth /etc/sssd/sssd.conf /etc/sssd/conf.d/*.conf /etc/pam.d/*
+#      /etc/sssd/sssd.conf:pam_cert_auth = True
+#      /etc/pam.d/smartcard-auth:auth   sufficient   pam_sss.so try_cert_auth
+#      /etc/pam.d/system-auth:auth   [success=done authinfo_unavail=ignore ignore=ignore default=die]   pam_sss.so try_cert_auth
+
+# If "pam_cert_auth" is not set to "true" in "/etc/sssd/sssd.conf", this is a finding.
+
+# If "pam_sss.so" is not set to "try_cert_auth" or "require_cert_auth" in both the "/etc/pam.d/smartcard-auth" and "/etc/pam.d/system-auth" files, this is a finding.
+
+check_v_230355 () {
+    #check config.sh for function
+    #MAY ALSO NEED TO INCLUDE MFA CHECK AS WELL
+    check_PKI
+    local finding=$?
+    [ $finding -eq 2] && return $finding
+
+    return $finding
+}

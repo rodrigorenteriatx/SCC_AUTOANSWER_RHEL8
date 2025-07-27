@@ -30,6 +30,7 @@ check_v_230355 () {
     #check config.sh for function
     check_SSSD
     local finding=$?
+    [ $finding -eq 2] && return $finding
 
-    if
+    return $finding
 }
