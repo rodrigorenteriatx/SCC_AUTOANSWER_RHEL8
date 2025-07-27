@@ -20,7 +20,7 @@ check_v_230317 () {
     adquery user | awk -F : '{print $1}' | while read -r user; do
         homedir=$(getent passwd "$user" | cut -d : -f 6)
         ls "$homedir" >/dev/null 2>&1
-        for f in "$initfiles[@]" do
+        for f in "$initfiles[@]"; do
             fpath="$homedir/$f"
             if [-f $fpath ]; then
                 echo "Checking homedir of $user"
