@@ -22,7 +22,7 @@ check_v_230317 () {
         ls "$homedir" >/dev/null 2>&1
         for f in "$initfiles[@]"; do
             fpath="$homedir/$f"
-            if [-f $fpath ]; then
+            if [ -f $fpath ]; then
                 echo "Checking homedir of $user"
                 grep -i path= "$fpath"
                 if [ $? -eq 0 ]; then
