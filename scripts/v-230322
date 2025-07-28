@@ -1,0 +1,50 @@
+#!/bin/bash
+
+# 1961
+# RULE             : All RHEL 8 local interactive user home directories must be group-owned by the home directory owner’s primary group.
+# QUESTION_TEXT    : Verify the assigned home directory of all local interactive users is group-owned by that user’s primary GID with the following command:
+
+# Note: This may miss local interactive users that have been assigned a privileged UID. Evidence of interactive use may be obtained from a number of log files containing system logon information. The returned directory "/home/smithj" is used as an example.
+
+#      $ sudo ls -ld $(awk -F: '($3>=1000)&&($7 !~ /nologin/){print $6}' /etc/passwd)
+
+#      drwxr-x--- 2 smithj admin 4096 Jun 5 12:41 smithj
+
+# Check the user's primary group with the following command:
+
+#      $ sudo grep $(grep smithj /etc/passwd | awk -F: '{print $4}') /etc/group
+
+#      admin:x:250:smithj,jonesj,jacksons
+
+# If the user home directory referenced in "/etc/passwd" is not group-owned by that user’s primary GID, this is a finding.
+
+#FOR NOW MADE FOR CENTRIFY ENVIRONMENT
+
+check_v_230322 () {
+    local finding=0
+
+    adquery user | awk -F : '{print $1}' | while read -r user; do
+    #rrenteria:x:10000:10:Rodrigo Renteria:/home/rrenteria:/bin/bash
+        read group homedir <<< $(getent passwd "$user" | awk -F : '{print $3, $6}')
+        # -eq FOR NUMERIC COMPARISONS
+        # = FOR STRING (character by character ) comparisons
+        if [ -d "$homedir"]; then
+            read gowner gid <<<$(stat -c "%G %g" "$homedir")
+            if [ ! "$group" -eq "$gid" ]; then
+                echo "USER: $user GID: $group HOME: $homedir"
+                echo "NOT OWNED BY USERS GROUP"
+                echo "GROUP: $gowner GID: $gid"
+                finding=1
+            fi
+        else
+            finding=1
+        fi
+
+        return $finding
+
+    done
+
+    return $finding
+
+}
+check_v_230322
