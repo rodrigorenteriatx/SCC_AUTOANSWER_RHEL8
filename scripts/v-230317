@@ -22,14 +22,15 @@ check_v_230317 () {
         ls "$homedir" >/dev/null 2>&1
         for f in "${initfiles[@]}"; do
             fpath="$homedir/$f"
-            echo $fpath
             if [ -f $fpath ]; then
+                echo "#########################"
                 echo "Checking homedir of $user"
                 grep -i path= "$fpath"
                 if [ $? -eq 0 ]; then
                     echo "PATH reference found"
                     finding=1
                 fi
+                echo "#########################"
             fi
         done
     done
