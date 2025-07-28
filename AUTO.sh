@@ -48,7 +48,7 @@ RESET='\e[0m'
 OUTPUT_LOG="RESULTS/detailed_summary.txt"
 > "$OUTPUT_LOG"
 
-source config.sh
+source ./config.sh
 
 for qid in "${ORDERED_KEYS[@]}"; do
     script="${CHECK_COMMANDS[$qid]}"
