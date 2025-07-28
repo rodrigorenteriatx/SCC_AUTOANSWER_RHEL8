@@ -1,3 +1,4 @@
+#!/bin/bash
 #USE_MFA=false
 
 #CHECK IF PKI IS USED (SMARTCARDS/CERTS)
