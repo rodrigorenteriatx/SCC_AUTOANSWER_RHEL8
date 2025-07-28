@@ -40,8 +40,6 @@ check_v_230322 () {
             finding=1
         fi
 
-        return $finding
-
     done
 
     return $finding
