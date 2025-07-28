@@ -64,7 +64,8 @@ for qid in "${ORDERED_KEYS[@]}"; do
     #2 = Not Applicable
 
     #THIS IS RAN IN A SUBSHELL BECAUSE OF $()
-    #FUNCTIONS SOURCED IN config.sh will NOT BE AVAILABLE
+    #FUNCTIONS SOURCED IN config.sh are available
+    #FUNCTIONS ARE INHERITED BY THE sourced scripts themselves
     script_output=$(source "${script}" 2>&1)
     # exit_code=$?
 
@@ -72,9 +73,7 @@ for qid in "${ORDERED_KEYS[@]}"; do
     # . script
     #
 
-    #. "${script}" > /tmp/script_output.txt 2>&1
     exit_code=$?
-    #script_output=$(< /tmp/script_output.txt)
 
 
 
