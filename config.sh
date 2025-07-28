@@ -49,6 +49,7 @@ check_SSSD () {
         if [ "$USE_CENTRIFY" == "true" ]; then
             echo "USING CENTRIFY FOR AUTHENTICATION"
         return 2
+        fi
     fi
     return 0
 }
