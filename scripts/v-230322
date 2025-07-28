@@ -22,7 +22,6 @@
 
 check_v_230322 () {
     local finding=0
-
     adquery user | awk -F : '{print $1}' | while read -r user; do
     #rrenteria:x:10000:10:Rodrigo Renteria:/home/rrenteria:/bin/bash
         read group homedir <<< $(getent passwd "$user" | awk -F : '{print $4, $6}')
