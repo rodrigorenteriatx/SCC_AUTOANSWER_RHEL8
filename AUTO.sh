@@ -67,15 +67,8 @@ for qid in "${ORDERED_KEYS[@]}"; do
     #FUNCTIONS SOURCED IN config.sh are available
     #FUNCTIONS ARE INHERITED BY THE sourced scripts themselves
     script_output=$(source "${script}" 2>&1)
-    # exit_code=$?
-
-    # WILL SOURCE AND BMAKE FUNCTIONS IN CURRETN SHELL (NO SUBSHELL)
-    # . script
-    #
 
     exit_code=$?
-
-
 
     case "$exit_code" in
         "0")
