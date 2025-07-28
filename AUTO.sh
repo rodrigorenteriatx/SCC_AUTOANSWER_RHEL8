@@ -62,8 +62,20 @@ for qid in "${ORDERED_KEYS[@]}"; do
     #0 = Not a Finding
     #1 = Finding
     #2 = Not Applicable
-    script_output=$(source "${script}" 2>&1)
+
+    #THIS IS RAN IN A SUBSHELL BECAUSE OF $()
+    #FUNCTIONS SOURCED IN config.sh will NOT BE AVAILABLE
+    # script_output=$(source "${script}" 2>&1)
+    # exit_code=$?
+
+    # WILL SOURCE AND BMAKE FUNCTIONS IN CURRETN SHELL (NO SUBSHELL)
+    # . script
+    #
+
+    . "${script}" > /tmp/script_output.txt 2>&1
     exit_code=$?
+    script_output=$(< /tmp/script_output.txt)
+
 
 
     case "$exit_code" in
