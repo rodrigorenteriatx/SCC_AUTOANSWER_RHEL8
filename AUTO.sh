@@ -73,12 +73,15 @@ for qid in "${ORDERED_KEYS[@]}"; do
     case "$exit_code" in
         "0")
             RESULTS["$qid"]="Not a Finding"
+            STATUS_COLOR=$GREEN
             ;;
         "1")
             RESULTS["$qid"]="Finding"
+            STATUS_COLOR=$RED
             ;;
         "2")
             RESULTS["$qid"]="Not Applicable"
+            STATUS_COLOR=$YELLOW
             ;;
     esac
 
@@ -98,7 +101,7 @@ for qid in "${ORDERED_KEYS[@]}"; do
     echo "[$qid] $vnum - $script" | tee -a "$OUTPUT_LOG"
     echo "$script_output" | tee -a "$OUTPUT_LOG"
     echo | tee -a "$OUTPUT_LOG"
-    echo "RESULT: ${RESULTS["$qid"]}" | tee -a "$OUTPUT_LOG"
+    echo "RESULT:${STATUS_COLOR} ${RESULTS["$qid"]} ${RESET}" | tee -a "$OUTPUT_LOG"
     echo "------------------------------------------" | tee -a "$OUTPUT_LOG"
     echo "##########################################" | tee -a "$OUTPUT_LOG"
     echo "------------------------------------------" | tee -a "$OUTPUT_LOG"
