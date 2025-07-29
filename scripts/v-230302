@@ -32,7 +32,8 @@ check_v_230302 () {
         if ! grep 'noexec' options ;
             echo "MISSING NOEXEC"
             echo "OPTIONS: $options"
-    done <<<$(mount  | grep home | awk -F' '  '/home\// {print $3,$6}')
+        fi
+    done <<"$(mount  | grep home | awk -F' '  '/home\// {print $3,$6}')"
 
 
 
