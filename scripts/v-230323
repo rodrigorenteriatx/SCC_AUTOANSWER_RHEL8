@@ -20,7 +20,6 @@
 
 check_v_230323 () {
     local finding=0
-    declare -A h
 
     list=$(adquery user | awk -F: '{print $6,$1}')
     while IFS=' ' read home user; do

@@ -12,3 +12,18 @@
 
 # Note: Command may produce error messages from the /proc and /sys directories.
 
+check_v_230326 () {
+    local finding=0
+    #EXCLUDE VIRTUAL FS AND OVERLAY FS (not host local)
+    find / -xdev \( -path /proc -o -path /sys -o -path /run -o -path /var/lib/docker \) -prune -o -nouser -print > tmp.txt
+    if [ -s tmp.txt ];then
+        echo "The following DO NOT HAVE AN ASSIGNED OWNER"
+        cat tmp.txt
+        finding=1
+    fi
+
+    return $finding
+
+}
+
+check_v_230326
