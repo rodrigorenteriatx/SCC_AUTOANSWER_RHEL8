@@ -24,7 +24,7 @@ check_v_230372 () {
     #MAY ALSO NEED TO INCLUDE MFA CHECK AS WELL
     check_PKI
     local finding=$?
-    [ $finding -eq 2] && return $finding
+    [ $finding -eq 2 ] && return $finding
 
     return $finding
 }
