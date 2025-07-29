@@ -3,7 +3,6 @@
 
 #FOR MY CASE, HOME DIRECTORIES ARE FOUND AND MOUNTED FROM AN NFS SERVER
 
-
 # RHEL 8 must prevent code from being executed on file systems that contain user home directories.
 # QUESTION_TEXT    : Verify file systems that contain user home directories are mounted with the "noexec" option.
 
@@ -27,15 +26,15 @@
 check_v_230302 () {
 
     local finding=0
+    adquery user | awk -F: '{print $6}' | xargs ls
+    while IFS=' ' read -r home options; do
+        echo "Checking $home"
+        if ! grep 'noexec' options ;
+            echo "MISSING NOEXEC"
+            echo "OPTIONS: $options"
+    done <<<(mount  | grep home | awk -F' '  '/home\// {print $3,$6}')
 
-    mounts=$(mount -t nfs,nfs4,nfs3 | grep home)
-    echo "$mounts"
 
-    finding=$(echo "$mounts" | grep -q noexec)
-
-    if [ "$finding" == "1" ];then
-        echo "HOME  dirs MISSING NOEXEC (NFS)"
-    fi
 
     return $finding
 
