@@ -20,6 +20,7 @@ check_v_230326 () {
         echo "The following DO NOT HAVE AN ASSIGNED OWNER"
         cat tmp.txt
         finding=1
+        rm tmp.txt
     fi
 
     return $finding
