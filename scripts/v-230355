@@ -39,3 +39,5 @@ check_v_230355 () {
 
     return $finding
 }
+
+check_v_230355

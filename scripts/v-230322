@@ -27,6 +27,7 @@ check_v_230322 () {
         read group homedir <<< $(getent passwd "$user" | awk -F : '{print $4, $6}')
         # -eq FOR NUMERIC COMPARISONS
         # = FOR STRING (character by character ) comparisons
+        echo "Checking $user"
         if [ -d "$homedir" ]; then
             read gowner gid <<<$(stat -c "%G %g" "$homedir")
             if [ ! "$group" -eq "$gid" ]; then

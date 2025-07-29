@@ -19,7 +19,7 @@
 
 # If "pam_sss.so" is not set to "try_cert_auth" or "require_cert_auth" in both the "/etc/pam.d/smartcard-auth" and "/etc/pam.d/system-auth" files, this is a finding.
 
-check_v_230355 () {
+check_v_230372 () {
     #check config.sh for function
     #MAY ALSO NEED TO INCLUDE MFA CHECK AS WELL
     check_PKI
@@ -28,3 +28,5 @@ check_v_230355 () {
 
     return $finding
 }
+
+check_v_230372
