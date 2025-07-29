@@ -23,7 +23,7 @@ check_v_230323 () {
     declare -A h
 
     list=$(adquery user | awk -F: '{print $6,$1}')
-    while IFS=' ' read home u; do
+    while IFS=' ' read home user; do
         ls $home >/dev/null 2>&1
         #h["$u"]="$home"
         if [ ! -d $home ]; then
