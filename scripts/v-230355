@@ -32,5 +32,10 @@ check_v_230355 () {
     local finding=$?
     [ $finding -eq 2] && return $finding
 
+    #POSSIBLE MANUAL CHECK
+    echo "MANUAL CHECK OF CERTIFICATE"
+    cat /etc/sssd/sssd.conf
+    finding=1
+
     return $finding
 }
