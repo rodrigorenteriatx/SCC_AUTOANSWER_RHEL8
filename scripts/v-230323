@@ -1,0 +1,40 @@
+#!/bin/bash
+
+# 1981
+# RULE             : All RHEL 8 local interactive user home directories defined in the /etc/passwd file must exist.
+# QUESTION_TEXT    : Verify the assigned home directory of all local interactive users on RHEL 8 exists with the following command:
+
+# $ sudo ls -ld $(awk -F: '($3>=1000)&&($7 !~ /nologin/){print $6}' /etc/passwd)
+
+# drwxr-xr-x 2 smithj admin 4096 Jun 5 12:41 smithj
+
+# Note: This may miss interactive users that have been assigned a privileged User ID (UID). Evidence of interactive use may be obtained from a number of log files containing system logon information.
+
+# Check that all referenced home directories exist with the following command:
+
+# $ sudo pwck -r
+
+# user 'smithj': directory '/home/smithj' does not exist
+
+# If any home directories referenced in "/etc/passwd" are returned as not defined, this is a finding.
+
+check_v_230323 () {
+    local finding=0
+    declare -A h
+
+    list=$(adquery user | awk -F: '{print $6,$1}')
+    while IFS=' ' read home u; do
+        ls $home >/dev/null 2>&1
+        #h["$u"]="$home"
+        if [ ! -d $home ]; then
+            echo "### $user ###"
+            echo "$home DOES NOT EXIST"
+            finding=1
+        fi
+    done <<<"$list"
+
+    return $finding
+
+}
+
+check_v_230323
