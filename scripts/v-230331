@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# 2141
+# QUESTION_ID      : ocil:navy.navwar.niwcatlantic.scc.rhel8os:question:2141
+# RULE             : RHEL 8 temporary user accounts must be provisioned with an expiration time of 72 hours or less.
+# QUESTION_TEXT    : Verify that temporary accounts have been provisioned with an expiration date of 72 hours.
+
+# For every existing temporary account, run the following command to obtain its account expiration information.
+
+# $ sudo chage -l system_account_name
+
+# Verify each of these accounts has an expiration date set within 72 hours.
+
+# If any temporary accounts have no expiration date set or do not expire within 72 hours, this is a finding.
+
+
+#THIS WILL HAVE TO BE A MANUAL CHECK
+
+check_v_230331 () {
+    #WILL LIKELY HAVE TO MANUALLY CHECK
+    local finding=1
+    echo "MANUALLY CHECK TEMP ACCOUNT EXISTENCE"
+    echo "LOCAL ACCOUNTS"
+    grep -vE 'nologin|false' /etc/passwd | awk -F: '{print $1}' | while read -r user; do
+        echo "$user"
+        chage -l "$user" | grep 'Password expires'
+    done
+
+    return $1
+
+}
