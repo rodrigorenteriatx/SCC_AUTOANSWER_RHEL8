@@ -23,12 +23,12 @@
 check_v_230327 () {
     local finding=0
     #LOCAL FILES AND DIRS
-    #EXCLUDE VIRTUAL FS AND OVERLAY FS (not host local)
-    # These are virtual or pseudo filesystems, not real files stored on disk.
 
-    # Files and directories in /proc, /sys, /run, and /dev are dynamically created by the kernel, not owned by users in the normal sense.
+    echo "RUNNING ....."
+    echo "find / -xdev ( -path /proc -o -path /sys -o -path /run -o -path /var/lib/docker ) -prune -o -nogroup -print"
+    echo -e "EXCLUDE VIRTUAL FS AND OVERLAY FS (not host local)\nThese are virtual or pseudo filesystems, not real files stored on disk.\nFiles and directories in /proc, /sys, /run, and /dev are dynamically created by the kernel, not owned by users in the normal sense.\nMany of them may appear unowned or inaccessible — but that’s expected behavior, not a security issue."
 
-    # Many of them may appear unowned or inaccessible — but that’s expected behavior, not a security issue.
+
     find / -xdev \( -path /proc -o -path /sys -o -path /run -o -path /var/lib/docker \) -prune -o -nogroup -print > tmp.txt
 
     if [ -s tmp.txt ];then

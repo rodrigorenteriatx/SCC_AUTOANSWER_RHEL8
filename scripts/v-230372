@@ -27,6 +27,8 @@ check_v_230372 () {
     [ $finding -eq 2 ] && return $finding
 
     return $finding
+
+
 }
 
 check_v_230372
