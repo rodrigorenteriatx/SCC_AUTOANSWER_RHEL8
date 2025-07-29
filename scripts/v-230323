@@ -26,15 +26,14 @@ check_v_230323 () {
     while IFS=' ' read home user; do
         ls $home >/dev/null 2>&1
         #h["$u"]="$home"
+        echo "### Checking $user ###"
         if [ ! -d $home ]; then
-            echo "### $user ###"
             echo "$home DOES NOT EXIST"
             finding=1
         fi
     done <<<"$list"
 
     return $finding
-
 }
 
 check_v_230323
