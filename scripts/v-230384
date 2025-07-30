@@ -18,7 +18,7 @@ check_v_230384 () {
     local finding=0
     while IFS='' read -r home; do
         ls "$home" &>/dev/null
-    done <$(adquery user -h)
+    done <<<$(adquery user -h)
 
     if ! grep -ir ^umask /home | grep -v '.bash_history';then
         echo "NO UMASK STATEMENTS FOUND"
