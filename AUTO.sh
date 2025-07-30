@@ -54,7 +54,7 @@ for qid in "${ORDERED_KEYS[@]}"; do
     script="${CHECK_COMMANDS[$qid]}"
     vnum="${VNUMBERS["$qid"]}"
 
-    if [[ -z "$script" ]]; then
+    if [ -z "$script" ]; then
         echo "SKIPPING $qid ($vnum)"
         continue
     fi

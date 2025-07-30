@@ -20,8 +20,8 @@ check_v_230384 () {
         ls "$home" &>/dev/null
     done <<<$(adquery user -h)
 
-    if ! grep -ir ^umask /home | grep -v '.bash_history';then
-        echo "NO UMASK STATEMENTS FOUND"
+    if  ! grep -ir ^umask /home | grep -v '.bash_history';then
+        echo "NO UMASK STATEMENTS FOUND
     else
         finding=1
     fi
