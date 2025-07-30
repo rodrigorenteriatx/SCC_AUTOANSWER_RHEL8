@@ -1,0 +1,52 @@
+#!/bin/bash
+
+# 3121
+# QUESTION_ID      : ocil:navy.navwar.niwcatlantic.scc.rhel8os:question:3121
+# RULE             : RHEL 8 must define default permissions for logon and non-logon shells.
+# QUESTION_TEXT    : Verify that the umask default for installed shells is "077".
+
+# Check for the value of the "UMASK" parameter in the "/etc/bashrc", "/etc/csh.cshrc" and "/etc/profile" files with the following command:
+
+# Note: If the value of the "UMASK" parameter is set to "000" in the "/etc/bashrc" the "/etc/csh.cshrc" or the "/etc/profile" files, the Severity is raised to a CAT I.
+
+# # grep -i umask /etc/bashrc /etc/csh.cshrc /etc/profile
+
+# /etc/bashrc:          umask 077
+# /etc/bashrc:          umask 077
+# /etc/csh.cshrc:      umask 077
+# /etc/csh.cshrc:      umask 077
+# /etc/profile:      umask 077
+# /etc/profile:      umask 077
+
+# If the value for the "UMASK" parameter is not "077", or the "UMASK" parameter is missing or is commented out, this is a finding.
+
+
+check_v_230385 () {
+    local finding=0
+
+    list=(/etc/bashrc /etc/csh.cshrc /etc/profile)
+    echo "CHECKING ......"
+    grep -i umask /etc/bashrc /etc/csh.cshrc /etc/profile | grep -vE '^*#'
+    echo ""
+
+
+    for file in "${list[@]}"; do
+            result=$( grep -i umask "$file" | grep -vE '^*#')
+            if [ ! "$?" -eq "0" ];then
+                    echo "UMASK MISSING IN $file"
+                    finding=1
+            else
+                    while IFS=' ' read -r _ umask; do
+                            if [ ! "$umask" -eq 077 ];then
+                                    echo "UMASK NOT 077 IN $file"
+                                    finding=1
+                            fi
+                    done <<<"$result"
+            fi
+
+    done
+
+    return $finding
+}
+
+check_v_230385
