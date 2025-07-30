@@ -27,7 +27,7 @@ check_v_230379 () {
     echo "###CHECK CENTRIFY ENABLED ACCOUNTS###"
     adquery user -e -u | grep zoneEnabled:true | cut -d: -f 1 |xargs -I{} adquery user {}
 
-    return $1
+    return $finding
 
 }
 

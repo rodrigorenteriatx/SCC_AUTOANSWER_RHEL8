@@ -22,8 +22,7 @@ check_v_230374 () {
         chage -l "$user" | grep 'Account expires'
     done
 
-    return $1
-
+    return $finding
 }
 
 check_v_230374

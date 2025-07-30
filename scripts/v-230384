@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# 3101
+# RULE             : RHEL 8 must set the umask value to 077 for all local interactive user accounts.
+# QUESTION_TEXT    : Verify that the default umask for all local interactive users is "077".
+
+# Identify the locations of all local interactive user home directories by looking at the "/etc/passwd" file.
+
+# Check all local interactive user initialization files for interactive users with the following command:
+
+# Note: The example is for a system that is configured to create users home directories in the "/home" directory.
+
+# $ sudo grep -ir ^umask /home | grep -v '.bash_history'
+
+# If any local interactive user initialization files are found to have a umask statement that has a value less restrictive than "077", this is a finding.
+
+check_v_230384 () {
+    local finding=0
+    while IFS='' read -r home; do
+        ls "$home" &>/dev/null
+    done <$(adquery user -h)
+
+    if ! grep -ir ^umask /home | grep -v '.bash_history';then
+        echo "NO UMASK STATEMENTS FOUND"
+    else
+        finding=1
+    fi
+
+    return $finding
+}
+
+check_v_230384
