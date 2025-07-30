@@ -38,7 +38,8 @@ check_v_230385 () {
             else
                     while IFS=' ' read -r _ umask; do
                             if [ ! "$umask" -eq 077 ];then
-                                    echo "UMASK NOT 077 IN $file"
+                                    echo "UMASK NOT 077 IN $file : set to $umask"
+
                                     finding=1
                             fi
                     done <<<"$result"
