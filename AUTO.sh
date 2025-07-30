@@ -102,7 +102,7 @@ for qid in "${ORDERED_KEYS[@]}"; do
     echo "$script_output" | tee -a "$OUTPUT_LOG"
     echo | tee -a "$OUTPUT_LOG"
     echo -e "RESULT:${STATUS_COLOR} ${RESULTS["$qid"]} ${RESET}"
-    echo "RESULT:${RESULTS["$qid"]}" >> "$OUTPUT_LOG"
+    echo "RESULT: ${RESULTS["$qid"]}" >> "$OUTPUT_LOG"
     echo "------------------------------------------" | tee -a "$OUTPUT_LOG"
     echo "##########################################" | tee -a "$OUTPUT_LOG"
     echo "------------------------------------------" | tee -a "$OUTPUT_LOG"
