@@ -23,7 +23,7 @@ check_v_230331 () {
     echo "LOCAL ACCOUNTS"
     grep -vE 'nologin|false' /etc/passwd | awk -F: '{print $1}' | while read -r user; do
         echo "$user"
-        chage -l "$user" | grep 'Password expires'
+        chage -l "$user" | grep 'Account expires'
     done
 
     return $1

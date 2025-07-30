@@ -26,8 +26,9 @@ check_v_230372 () {
     local finding=$?
     [ $finding -eq 2 ] && return $finding
 
-    return $finding
 
+
+    return $finding
 
 }
 
