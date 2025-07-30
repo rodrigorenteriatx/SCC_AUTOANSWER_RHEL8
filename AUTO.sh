@@ -101,7 +101,7 @@ for qid in "${ORDERED_KEYS[@]}"; do
     echo "[$qid] $vnum - $script" | tee -a "$OUTPUT_LOG"
     echo "$script_output" | tee -a "$OUTPUT_LOG"
     echo | tee -a "$OUTPUT_LOG"
-    echo -e "RESULT:${STATUS_COLOR} ${RESULTS["$qid"]} ${RESET}" | tee -a "$OUTPUT_LOG"
+    echo -e "RESULT:${STATUS_COLOR} ${RESULTS["$qid"]} ${RESET}" | tee >(cat >> "$OUTPUT_LOG")
     echo "------------------------------------------" | tee -a "$OUTPUT_LOG"
     echo "##########################################" | tee -a "$OUTPUT_LOG"
     echo "------------------------------------------" | tee -a "$OUTPUT_LOG"
