@@ -35,8 +35,8 @@ check_v_230327 () {
         echo "The following DO NOT HAVE AN ASSIGNED GROUP"
         cat tmp.txt
         finding=1
-        rm tmp.txt
     fi
+    rm tmp.txt
 
     return $finding
 
