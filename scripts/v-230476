@@ -29,7 +29,7 @@ check_v_230476 () {
 
     dir=$(grep -iw log_file /etc/audit/auditd.conf | cut -d' ' -f 3)
     min="10G"
-    read partition size <<<"$(df --output='target,size' "$dir" | tail -1 )"
+    read partition size <<<"$(df -h --output='target,size' "$dir" | tail -1 )"
 
     echo "$dir is located in filesystem  $partition  , $size"
 
