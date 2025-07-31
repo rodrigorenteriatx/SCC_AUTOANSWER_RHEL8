@@ -33,7 +33,7 @@ check_v_230476 () {
 
     echo "$dir is located in filesystem  $partition  , $size"
 
-    if [ ! "$partition" == "/var/log/audit"]; then
+    if [ ! "$partition" == "/var/log/audit" ]; then
         echo "$dir is NOT its own PARTITION, resides in $partition"
         finding=1
     fi
