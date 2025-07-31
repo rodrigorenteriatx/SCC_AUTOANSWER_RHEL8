@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# 4581
+# QUESTION_ID      : ocil:navy.navwar.niwcatlantic.scc.rhel8os:question:4581
+# RULE             : The RHEL 8 audit records must be off-loaded onto a different system or storage media from the system being audited.
+# QUESTION_TEXT    : Verify the audit system offloads audit records onto a different system or media from the system being audited with the following command:
+
+#      $ sudo grep @@ /etc/rsyslog.conf /etc/rsyslog.d/*.conf
+
+#      /etc/rsyslog.conf:*.* @@[logaggregationserver.example.mil]:[port]
+
+# If a remote server is not configured, or the line is commented out, ask the system administrator to indicate how the audit logs are offloaded to a different system or media.
+
+# If there is no evidence that the audit logs are being offloaded to another system or media, this is a finding.
+
+check_v_230479 () {
+    finding=0
+    #MAY HAVE TO BE A MANUAL CHECK FOR US
+    if ! grep @@ /etc/rsyslog.conf /etc/rsyslog.d/*.conf | grep -vE ^*#;then
+        echo "No entry found of rsyslog sending logs to remote server"
+        finding=1
+    fi
+
+    return $finding
+
+}
+
+check_v_230479
