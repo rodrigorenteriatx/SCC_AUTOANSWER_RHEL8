@@ -27,6 +27,7 @@
 check_v_230466 () {
     local finding=0
     dir=$(grep dir /etc/security/faillock.conf  | grep -vE ^# | cut -d' ' -f 3)
+    echo "DEFAULT DIR: $dir"
     if ! grep -w "$dir" /etc/audit/audit.rules; then
         echo "NO watch rule for faillock $dir"
         finding=1
