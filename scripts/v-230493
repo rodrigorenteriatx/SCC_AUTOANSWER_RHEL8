@@ -1,0 +1,43 @@
+#!/bin/bash
+
+# 4841
+# RULE             : RHEL 8 must cover or disable the built-in or attached camera when not in use.
+# QUESTION_TEXT    : If the device or operating system does not have a camera installed, this requirement is not applicable.
+
+# This requirement is not applicable to mobile devices (smartphones and tablets), where the use of the camera is a local AO decision.
+
+# This requirement is not applicable to dedicated VTC suites located in approved VTC locations that are centrally managed.
+
+# For an external camera, if there is not a method for the operator to manually disconnect the camera at the end of collaborative computing sessions, this is a finding.
+
+# For a built-in camera, the camera must be protected by a camera cover (e.g., laptop camera cover slide) when not in use. If the built-in camera is not protected with a camera cover, or is not physically disabled, this is a finding.
+
+# If the camera is not disconnected, covered, or physically disabled, determine if it is being disabled via software with the following commands:
+
+# Verify the operating system disables the ability to load the uvcvideo kernel module.
+
+#      $ sudo grep -r uvcvideo /etc/modprobe.d/* | grep "/bin/false"
+#      install uvcvideo /bin/false
+
+# If the command does not return any output, or the line is commented out, and the collaborative computing device has not been authorized for use, this is a finding.
+
+check_v_230493 () {
+    local finding=0
+
+    if ! grep -r uvcvideo /etc/modprobe.d/* | grep '/bin/false';
+        echo "Please DISABLE uvcvideo KERNEL MODULE"
+        finding=1
+    else
+        echo "KERNEL MODULE LOADING DISABLED"
+        if ! grep -r uvcvideo /etc/modprobe.d/* | grep "blacklist";then
+            echo "Please BLACKLIST -> Prevent from Auto/Manual Loading Kmodule"
+        else
+            echo "BLACKLISTED"
+        fi
+    fi
+
+    return $finding
+
+}
+
+check_v_230493
