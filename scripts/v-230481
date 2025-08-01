@@ -29,11 +29,11 @@ check_v_230481 () {
 
 
     if [ $? -ne 0 ]; then
-        "DefaultNetstreamDriver ENTRY NOT FOUND"
+        echo "\$DefaultNetstreamDriver ENTRY NOT FOUND"
         finding=1
     else
         if [ ! "$check1" = "gtls" ]; then
-            echo '$DefaultNetstreamDriver needs to be gtls, val: `$check1`'
+            echo "\$DefaultNetstreamDriver needs to be gtls, val: $check1"
             finding=1
         fi
     fi
@@ -44,11 +44,11 @@ check_v_230481 () {
     check2=$(grep -si '$ActionSendStreamDriverMode' /etc/rsyslog.conf /etc/rsyslog.d/*.conf | grep -vE '^*#'  | cut -d' ' -f 2)
 
     if [ $? -ne 0 ]; then
-        echo 'ActionSendStreamDriverMode NOT FOUND'
+        echo '$ActionSendStreamDriverMode NOT FOUND'
         finding=1
     else
         if [ ! "$check2" == "1" ]; then
-            echo '$ActionSendStreamDriverMode needs to be 1 , val: `$check2`'
+            echo "\$ActionSendStreamDriverMode needs to be 1 , val: $check2"
             finding=1
         fi
     fi
