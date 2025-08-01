@@ -29,7 +29,7 @@ check_v_230484 () {
 
     #IF YOU WANT TO USE '||' OR '-o' , you need to DOUBLE [[ ]]
 
-    if [[ -z "$maxpoll" -o "$maxpoll" -gt 16 ]];then
+    if [[ -z "$maxpoll" || "$maxpoll" -gt 16 ]];then
         echo "MAXPOLL NOT SET CORRECTLY : $maxpoll"
         finding=1
     fi
