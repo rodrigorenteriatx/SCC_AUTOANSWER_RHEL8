@@ -27,6 +27,9 @@ check_v_230484 () {
     #\d+ -> digit or more
     maxpoll=$(grep -Ei '^\s*server.*maxpoll' /etc/chrony.conf  | grep -Po 'maxpoll\s+\d+'| cut -d' ' -f 2)
 
+    if ! grep -Ei '^\s*server.*maxpoll' /etc/chrony.conf; then
+        echo "Entry not found in /etc/chrony.conf"
+
     #IF YOU WANT TO USE '||' OR '-o' , you need to DOUBLE [[ ]]
 
     if [[ -z "$maxpoll" || "$maxpoll" -gt 16 ]];then
