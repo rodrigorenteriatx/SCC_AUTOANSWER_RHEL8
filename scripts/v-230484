@@ -23,6 +23,8 @@ check_v_230484 () {
     local finding=0
 
     echo "Please double check server entry in /etc/chrony.conf"
+    #\s+ -> empty characters or more
+    #\d+ -> digit or more
     maxpoll=$(grep -Ei '^\s*server.*maxpoll' /etc/chrony.conf  | grep -Po 'maxpoll\s+\d+'| cut -d' ' -f 2)
 
     #IF YOU WANT TO USE '||' OR '-o' , you need to DOUBLE [[ ]]
