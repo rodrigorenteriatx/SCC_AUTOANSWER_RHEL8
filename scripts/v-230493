@@ -24,7 +24,7 @@
 check_v_230493 () {
     local finding=0
 
-    if ! grep -r uvcvideo /etc/modprobe.d/* | grep '/bin/false';
+    if ! grep -r uvcvideo /etc/modprobe.d/* | grep '/bin/false';then
         echo "Please DISABLE uvcvideo KERNEL MODULE"
         finding=1
     else
