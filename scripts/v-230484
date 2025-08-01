@@ -29,6 +29,7 @@ check_v_230484 () {
 
     if ! grep -Ei '^\s*server.*maxpoll' /etc/chrony.conf; then
         echo "Entry not found in /etc/chrony.conf"
+    fi
 
     #IF YOU WANT TO USE '||' OR '-o' , you need to DOUBLE [[ ]]
 
