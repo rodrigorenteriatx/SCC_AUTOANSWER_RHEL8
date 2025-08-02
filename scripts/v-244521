@@ -28,6 +28,7 @@ check_v_244521 () {
                 echo "grub superuser: $superuser MACTHES $user"
             else
                 echo "grub superuser is UNIQUE : $superuser"
+            fi
     done
 
     return $finding
