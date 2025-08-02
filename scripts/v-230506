@@ -19,14 +19,14 @@
 
 check_v_230506 () {
 
-    echo "Searching for wifi type interfaces..."
+    echo -e "Searching for wifi type interfaces...\n"
 
     nmcli device status
     if nmcli device status | awk ' NR > 1 {print $2}' |grep -i wifi; then
         echo "WIFI DEVICES FOUND!!"
         finding=1
     else
-        echo "NO WIFI DEVICES FOUND"
+        echo -e "NO WIFI DEVICES FOUND\n"
     fi
 
     return $finding
