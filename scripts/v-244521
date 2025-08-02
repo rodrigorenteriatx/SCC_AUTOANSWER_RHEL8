@@ -1,0 +1,42 @@
+#!/bin/bash
+# 6281
+# RULE             : RHEL 8 operating systems booted with United Extensible Firmware Interface (UEFI) must require a unique superusers name upon booting into single-user mode and maintenance.
+# QUESTION_TEXT    : For systems that use BIOS, this is Not Applicable.
+
+# Verify that a unique name is set as the "superusers" account:
+
+# $ sudo grep -iw "superusers" /boot/efi/EFI/redhat/grub.cfg
+# set superusers="[someuniquestringhere]"
+# export superusers
+
+# If "superusers" is identical to any OS account name or is missing a name, this is a finding.
+
+check_v_244521 () {
+    local finding=0
+    grep -iw "superusers" /boot/*/grub.cfg
+    superuser=(grep -iEw "\s+set\s+superusers=" /boot/*/grub.cfg | awk -F'"' '{print $2}')
+
+    #COMBINE LIST OF LOCAL AND AD USERS!!
+    adusers=($(adquery user | cut -d: -f1))
+    localusers=($(awk -F: '{print $1}' /etc/passwd))
+
+    all=("${adusers[@]}" "${localusers[@]}")
+
+    for user in "${all[@]}"; do
+            if [ "$user" == "$superuser" ];then
+                finding=1
+                echo "grub superuser: $superuser MACTHES $user"
+            else
+                echo "grub superuser is UNIQUE : $superuser"
+    done
+
+    return $finding
+
+
+
+
+
+
+}
+
+check_v_244521
