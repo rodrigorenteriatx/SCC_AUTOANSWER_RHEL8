@@ -1,0 +1,37 @@
+#!/bin/bash
+# 5081
+# RULE             : RHEL 8 wireless network adapters must be disabled.
+# QUESTION_TEXT    : Verify there are no wireless interfaces configured on the system with the following command:
+
+# Note: This requirement is Not Applicable for systems that do not have physical wireless network radios.
+
+# $ sudo nmcli device status
+
+# DEVICE                    TYPE            STATE                    CONNECTION
+# virbr0                      bridge         connected             virbr0
+# wlp7s0                    wifi              connected            wifiSSID
+# enp6s0                    ethernet     disconnected        --
+# p2p-dev-wlp7s0     wifi-p2p     disconnected        --
+# lo                             loopback    unmanaged           --
+# virbr0-nic                tun              unmanaged          --
+
+# If a wireless interface is configured and has not been documented and approved by the Information System Security Officer (ISSO), this is a finding.
+
+check_v_230506 () {
+
+    echo "Searching for wifi type interfaces..."
+
+    nmcli device status
+    if nmcli device status | awk ' NR > 1 {print $2}' |grep -i wifi; then
+        echo "WIFI DEVICES FOUND!!"
+        finding=1
+    else
+        echo "NO WIFI DEVICES FOUND"
+    fi
+
+    return $finding
+
+
+}
+
+check_v_230506
