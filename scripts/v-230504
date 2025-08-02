@@ -32,7 +32,11 @@ check_v_230504 () {
      if [ ! $? -eq 0 ]; then
           finding=1
      fi
-     [ -z "$target" ] && { finding=1 ; echo "Target should be 'DROP'" }
+
+     #{ } NEEDS all commands inside to end with ';'
+     # Command Group (or Block)
+     # Groups multiple commands together to be treated as a single unit
+     [ -z "$target" ] && { finding=1 ; echo "Target should be 'DROP'"; }
 
      return $finding
 
