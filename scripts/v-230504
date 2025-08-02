@@ -24,8 +24,11 @@
 
 check_v_230504 () {
      local finding=0
+     firewall-cmd --list-all
+
      target=$(firewall-cmd --get-active-zones  | grep -vi inter | xargs -I{} firewall-cmd --info-zone={} | grep -i drop)
      firewall-cmd --state
+
      if [ ! $? -eq 0 ]; then
           finding=1
      fi
