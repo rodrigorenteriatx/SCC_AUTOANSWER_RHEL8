@@ -14,7 +14,7 @@
 check_v_244521 () {
     local finding=0
     grep -iw "superusers" /boot/*/grub.cfg
-    superuser=(grep -iEw "\s+set\s+superusers=" /boot/*/grub.cfg | awk -F'"' '{print $2}')
+    superuser=$(grep -iEw "\s+set\s+superusers=" /boot/*/grub.cfg | awk -F'"' '{print $2}')
 
     #COMBINE LIST OF LOCAL AND AD USERS!!
     adusers=($(adquery user | cut -d: -f1))
