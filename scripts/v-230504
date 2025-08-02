@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# 5041
+# RULE             : A RHEL 8 firewall must employ a deny-all, allow-by-exception policy for allowing connections to other systems.
+# QUESTION_TEXT    : Verify "firewalld" is configured to employ a deny-all, allow-by-exception policy for allowing connections to other systems with the following commands:
+
+#      $ sudo  firewall-cmd --state
+#      running
+
+#      $ sudo firewall-cmd --get-active-zones
+#      [custom]
+#      interfaces: ens33
+
+#      $ sudo firewall-cmd --info-zone=[custom] | grep target
+#      target: DROP
+
+# If no zones are active on the RHEL 8 interfaces or if the target is set to a different option other than "DROP", this is a finding.
+
+# If the "firewalld" package is not installed, ask the System Administrator if an alternate firewall (such as iptables) is installed and in use, and how is it configured to employ a deny-all, allow-by-exception policy.
+
+# If the alternate firewall is not configured to employ a deny-all, allow-by-exception policy, this is a finding.
+
+# If no firewall is installed, this is a finding.
+
+check_v_230504 () {
+     local finding=0
+     target=$(firewall-cmd --get-active-zones  | grep -vi inter | xargs -I{} firewall-cmd --info-zone={} | grep -i drop)
+     firewall-cmd --state
+     if [ ! $? -eq 0 ]; then
+          finding=1
+     fi
+     [ -z "$target" ] && finding=1; echo "Target should be 'DROP'"
+
+     return $finding
+
+}
+
+check_v_230504

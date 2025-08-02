@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# 4981
+# RULE             : RHEL 8 must be configured to prohibit or restrict the use of functions, ports, protocols, and/or services, as defined in the Ports, Protocols, and Services Management (PPSM) Category Assignments List (CAL) and vulnerability assessments.
+# QUESTION_TEXT    : Inspect the firewall configuration and running services to verify it is configured to prohibit or restrict the use of functions, ports, protocols, and/or services that are unnecessary or prohibited.
+
+# Check which services are currently active with the following command:
+
+# $ sudo firewall-cmd --list-all-zones
+
+# custom (active)
+# target: DROP
+# icmp-block-inversion: no
+# interfaces: ens33
+# sources:
+# services: dhcpv6-client dns http https ldaps rpc-bind ssh
+# ports:
+# masquerade: no
+# forward-ports:
+# icmp-blocks:
+# rich rules:
+
+# Ask the System Administrator for the site or program Ports, Protocols, and Services Management Component Local Service Assessment (PPSM CLSA). Verify the services allowed by the firewall match the PPSM CLSA.
+
+# If there are additional ports, protocols, or services that are not in the PPSM CLSA, or there are ports, protocols, or services that are prohibited by the PPSM Category Assurance List (CAL), this is a finding.
+
+check_v_230500 () {
+    local finding=1
+    echo "MANUAL CHECK OF FIREWALL"
+    firewall-cmd --list-all-zones
+    return $finding
+}
+
+check_v_230500

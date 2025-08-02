@@ -4,7 +4,7 @@ VERSION          : 2.2.12
 CHECKSUM         : 0ae7615cf9bd5c77e169b9af2b7077b457c3faac54cd59c8bdc99d982f66e528
 MANUAL QUESTIONS : 63
 
-IMPORTANT: Make sure to save the completed version of this file to: 
+IMPORTANT: Make sure to save the completed version of this file to:
 <SCC Install>/Resources/Content/Manual_Questions/Completed_Files
 
 This file contains all of the non-automated STIG requirements found in the STIG.
@@ -23,7 +23,7 @@ TITLE            : CAT I, V-230224, SV-230224r1044787, SRG-OS-000185-GPOS-00079
 TEST_ACTION_ID   : ocil:navy.navwar.niwcatlantic.scc.rhel8os:testaction:61
 QUESTION_ID      : ocil:navy.navwar.niwcatlantic.scc.rhel8os:question:61
 RULE             : All RHEL 8 local disk partitions must implement cryptographic mechanisms to prevent unauthorized disclosure or modification of all information that requires at rest protection.
-QUESTION_TEXT    : Verify RHEL 8 prevents unauthorized disclosure or modification of all information requiring at-rest protection by using disk encryption. 
+QUESTION_TEXT    : Verify RHEL 8 prevents unauthorized disclosure or modification of all information requiring at-rest protection by using disk encryption.
 
 If there is a documented and approved reason for not having data-at-rest encryption at the operating system level, such as encryption provided by a hypervisor or a disk storage array in a virtualized environment, this requirement is not applicable.
 
@@ -33,7 +33,7 @@ Verify all system partitions are encrypted with the following command:
 
      /dev/mapper/rhel-root:  UUID="67b7d7fe-de60-6fd0-befb-e6748cf97743" TYPE="crypto_LUKS"
 
-Every persistent disk partition present must be of type "crypto_LUKS". If any partitions other than the boot partition or pseudo file systems (such as /proc or /sys) are not type "crypto_LUKS", ask the administrator to indicate how the partitions are encrypted. 
+Every persistent disk partition present must be of type "crypto_LUKS". If any partitions other than the boot partition or pseudo file systems (such as /proc or /sys) are not type "crypto_LUKS", ask the administrator to indicate how the partitions are encrypted.
 
 If there is no evidence that these partitions are encrypted, this is a finding.
 
@@ -46,7 +46,7 @@ CCI-001199
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 1 *******************************
 
@@ -70,7 +70,7 @@ CCI-000366
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 2 *******************************
 
@@ -90,9 +90,9 @@ $ sudo yum history list | more
 Loaded plugins: langpacks, product-id, subscription-manager
 ID | Command line | Date and time | Action(s) | Altered
 -------------------------------------------------------------------------------
-70 | install aide | 2020-03-05 10:58 | Install | 1 
+70 | install aide | 2020-03-05 10:58 | Install | 1
 69 | update -y | 2020-03-04 14:34 | Update | 18 EE
-68 | install vlc | 2020-02-21 17:12 | Install | 21 
+68 | install vlc | 2020-02-21 17:12 | Install | 21
 67 | update -y | 2020-02-21 17:04 | Update | 7 EE
 
 If package updates have not been performed on the system within the timeframe the site/program documentation requires, this is a finding.
@@ -110,7 +110,7 @@ CCI-000366
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 3 *******************************
 
@@ -160,7 +160,7 @@ CCI-000048
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 4 *******************************
 
@@ -201,7 +201,7 @@ CCI-000185
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 5 *******************************
 
@@ -227,7 +227,7 @@ CCI-000186
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 6 *******************************
 
@@ -254,7 +254,7 @@ CCI-001453
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 7 *******************************
 
@@ -290,7 +290,7 @@ CCI-001453
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 8 *******************************
 
@@ -316,7 +316,7 @@ CCI-001453
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 9 *******************************
 
@@ -356,7 +356,7 @@ CCI-001744
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 10 *******************************
 
@@ -387,7 +387,7 @@ CCI-004046
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 11 *******************************
 
@@ -421,7 +421,7 @@ CCI-001953
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 12 *******************************
 
@@ -458,7 +458,7 @@ CCI-000366
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 13 *******************************
 
@@ -484,7 +484,7 @@ CCI-000366
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 14 *******************************
 
@@ -510,7 +510,7 @@ CCI-000366
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 15 *******************************
 
@@ -536,7 +536,7 @@ CCI-000366
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 16 *******************************
 
@@ -549,7 +549,7 @@ QUESTION_TEXT    : Verify that local initialization files do not execute world-w
 
 Check the system for world-writable files.
 
-The following command will discover and print world-writable files. Run it once for each local partition [PART]: 
+The following command will discover and print world-writable files. Run it once for each local partition [PART]:
 
 $ sudo find [PART] -xdev -type f -perm -0002 -print
 
@@ -570,7 +570,7 @@ CCI-000366
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 17 *******************************
 
@@ -601,7 +601,7 @@ CCI-000366
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 18 *******************************
 
@@ -627,7 +627,7 @@ CCI-000366
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 19 *******************************
 
@@ -661,7 +661,7 @@ CCI-000366
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 20 *******************************
 
@@ -695,7 +695,7 @@ CCI-000366
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 21 *******************************
 
@@ -723,7 +723,7 @@ CCI-000366
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 22 *******************************
 
@@ -751,7 +751,7 @@ CCI-000366
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 23 *******************************
 
@@ -779,7 +779,7 @@ CCI-000016
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 24 *******************************
 
@@ -807,7 +807,7 @@ CCI-000057
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 25 *******************************
 
@@ -849,7 +849,7 @@ CCI-000187
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 26 *******************************
 
@@ -884,7 +884,7 @@ CCI-000765
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 27 *******************************
 
@@ -911,7 +911,7 @@ CCI-001682
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 28 *******************************
 
@@ -945,7 +945,7 @@ CCI-000366
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 29 *******************************
 
@@ -975,7 +975,7 @@ CCI-000366
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 30 *******************************
 
@@ -994,9 +994,9 @@ Note: If the value of the "UMASK" parameter is set to "000" in the "/etc/bashrc"
 
 /etc/bashrc:          umask 077
 /etc/bashrc:          umask 077
-/etc/csh.cshrc:      umask 077   
 /etc/csh.cshrc:      umask 077
-/etc/profile:      umask 077   
+/etc/csh.cshrc:      umask 077
+/etc/profile:      umask 077
 /etc/profile:      umask 077
 
 If the value for the "UMASK" parameter is not "077", or the "UMASK" parameter is missing or is commented out, this is a finding.
@@ -1010,7 +1010,7 @@ CCI-000366
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 31 *******************************
 
@@ -1046,7 +1046,7 @@ CCI-000366
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 32 *******************************
 
@@ -1086,7 +1086,7 @@ CCI-000169
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 33 *******************************
 
@@ -1125,7 +1125,7 @@ CCI-001849
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 34 *******************************
 
@@ -1140,7 +1140,7 @@ QUESTION_TEXT    : Verify the audit system offloads audit records onto a differe
 
      /etc/rsyslog.conf:*.* @@[logaggregationserver.example.mil]:[port]
 
-If a remote server is not configured, or the line is commented out, ask the system administrator to indicate how the audit logs are offloaded to a different system or media. 
+If a remote server is not configured, or the line is commented out, ask the system administrator to indicate how the audit logs are offloaded to a different system or media.
 
 If there is no evidence that the audit logs are being offloaded to another system or media, this is a finding.
 
@@ -1153,7 +1153,7 @@ CCI-001851
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 35 *******************************
 
@@ -1176,7 +1176,7 @@ $ sudo grep -i '$ActionSendStreamDriverMode' /etc/rsyslog.conf /etc/rsyslog.d/*.
 
 If the value of the "$ActionSendStreamDriverMode" option is not set to "1" or the line is commented out, this is a finding.
 
-If neither of the definitions above are set, ask the System Administrator to indicate how the audit logs are off-loaded to a different system or media. 
+If neither of the definitions above are set, ask the System Administrator to indicate how the audit logs are off-loaded to a different system or media.
 
 If there is no evidence that the transfer of the audit logs being off-loaded to another system or media is encrypted, this is a finding.
 
@@ -1189,7 +1189,7 @@ CCI-001851
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 36 *******************************
 
@@ -1209,7 +1209,7 @@ If the "maxpoll" option is set to a number greater than 16 or the line is commen
 Verify the "chrony.conf" file is configured to an authoritative DoD time source by running the following command:
 
 $ sudo grep -i server /etc/chrony.conf
-server 0.us.pool.ntp.mil 
+server 0.us.pool.ntp.mil
 
 If the parameter "server" is not set or is not set to an authoritative DoD time source, this is a finding.
 
@@ -1223,7 +1223,7 @@ CCI-004923
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 37 *******************************
 
@@ -1267,7 +1267,7 @@ CCI-000381
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 38 *******************************
 
@@ -1286,15 +1286,15 @@ custom (active)
 target: DROP
 icmp-block-inversion: no
 interfaces: ens33
-sources: 
+sources:
 services: dhcpv6-client dns http https ldaps rpc-bind ssh
-ports: 
+ports:
 masquerade: no
-forward-ports: 
-icmp-blocks: 
-rich rules: 
+forward-ports:
+icmp-blocks:
+rich rules:
 
-Ask the System Administrator for the site or program Ports, Protocols, and Services Management Component Local Service Assessment (PPSM CLSA). Verify the services allowed by the firewall match the PPSM CLSA. 
+Ask the System Administrator for the site or program Ports, Protocols, and Services Management Component Local Service Assessment (PPSM CLSA). Verify the services allowed by the firewall match the PPSM CLSA.
 
 If there are additional ports, protocols, or services that are not in the PPSM CLSA, or there are ports, protocols, or services that are prohibited by the PPSM Category Assurance List (CAL), this is a finding.
 
@@ -1307,7 +1307,7 @@ CCI-000382
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 39 *******************************
 
@@ -1330,7 +1330,7 @@ QUESTION_TEXT    : Verify "firewalld" is configured to employ a deny-all, allow-
 
 If no zones are active on the RHEL 8 interfaces or if the target is set to a different option other than "DROP", this is a finding.
 
-If the "firewalld" package is not installed, ask the System Administrator if an alternate firewall (such as iptables) is installed and in use, and how is it configured to employ a deny-all, allow-by-exception policy. 
+If the "firewalld" package is not installed, ask the System Administrator if an alternate firewall (such as iptables) is installed and in use, and how is it configured to employ a deny-all, allow-by-exception policy.
 
 If the alternate firewall is not configured to employ a deny-all, allow-by-exception policy, this is a finding.
 
@@ -1345,7 +1345,7 @@ CCI-002314
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 40 *******************************
 
@@ -1379,7 +1379,7 @@ CCI-001444
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 41 *******************************
 
@@ -1409,7 +1409,7 @@ CCI-001958
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 42 *******************************
 
@@ -1437,7 +1437,7 @@ CCI-000213
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 43 *******************************
 
@@ -1465,7 +1465,7 @@ CCI-000213
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 44 *******************************
 
@@ -1495,7 +1495,7 @@ CCI-000366
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 45 *******************************
 
@@ -1518,7 +1518,7 @@ $ sudo ls -lLR /<home directory>/<users home directory>/
 If any files found with a group-owner different from the home directory user private group, check to see if the user is a member of that group with the following command:
 
 $ sudo grep smithj /etc/group
-sa:x:100:juan,shelley,bob,smithj 
+sa:x:100:juan,shelley,bob,smithj
 smithj:x:521:smithj
 
 If any files or directories are group owned by a group that the directory owner is not a member of, this is a finding.
@@ -1532,7 +1532,7 @@ CCI-000366
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 46 *******************************
 
@@ -1561,7 +1561,7 @@ CCI-000044
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 47 *******************************
 
@@ -1591,7 +1591,7 @@ CCI-000044
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 48 *******************************
 
@@ -1619,7 +1619,7 @@ CCI-000057
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 49 *******************************
 
@@ -1628,7 +1628,7 @@ TITLE            : CAT II, V-244538, SV-244538r1017345, SRG-OS-000029-GPOS-00010
 TEST_ACTION_ID   : ocil:navy.navwar.niwcatlantic.scc.rhel8os:testaction:6601
 QUESTION_ID      : ocil:navy.navwar.niwcatlantic.scc.rhel8os:question:6601
 RULE             : RHEL 8 must prevent a user from overriding the session idle-delay setting for the graphical user interface.
-QUESTION_TEXT    : Verify the operating system prevents a user from overriding settings for graphical user interfaces. 
+QUESTION_TEXT    : Verify the operating system prevents a user from overriding settings for graphical user interfaces.
 
 Note: This requirement assumes the use of the RHEL 8 default graphical user interface, Gnome Shell. If the system does not have any graphical user interface installed, this requirement is Not Applicable.
 
@@ -1657,7 +1657,7 @@ CCI-000057
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 50 *******************************
 
@@ -1697,7 +1697,7 @@ CCI-001764
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 51 *******************************
 
@@ -1734,7 +1734,7 @@ CCI-002238
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 52 *******************************
 
@@ -1772,7 +1772,7 @@ CCI-002238
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 53 *******************************
 
@@ -1809,7 +1809,7 @@ CCI-000366
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 54 *******************************
 
@@ -1825,7 +1825,7 @@ Check that the AIDE package is installed with the following command:
 
      aide-0.16-14.el8_5.1.x86_64
 
-If AIDE is not installed, ask the System Administrator how file integrity checks are performed on the system. 
+If AIDE is not installed, ask the System Administrator how file integrity checks are performed on the system.
 
 If there is no application installed to perform integrity checks, this is a finding.
 
@@ -1843,7 +1843,7 @@ CCI-002696
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 55 *******************************
 
@@ -1877,7 +1877,7 @@ CCI-000366
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 56 *******************************
 
@@ -1886,25 +1886,25 @@ TITLE            : CAT II, V-254520, SV-254520r958726, SRG-OS-000324-GPOS-00125
 TEST_ACTION_ID   : ocil:navy.navwar.niwcatlantic.scc.rhel8os:testaction:7221
 QUESTION_ID      : ocil:navy.navwar.niwcatlantic.scc.rhel8os:question:7221
 RULE             : RHEL 8 must prevent nonprivileged users from executing privileged functions, including disabling, circumventing, or altering implemented security safeguards/countermeasures.
-QUESTION_TEXT    : Verify the operating system prevents nonprivileged users from executing privileged functions, including disabling, circumventing, or altering implemented security safeguards/countermeasures. 
- 
-Obtain a list of authorized users (other than system administrator and guest accounts) for the system. 
- 
-Check the list against the system by using the following command: 
- 
+QUESTION_TEXT    : Verify the operating system prevents nonprivileged users from executing privileged functions, including disabling, circumventing, or altering implemented security safeguards/countermeasures.
+
+Obtain a list of authorized users (other than system administrator and guest accounts) for the system.
+
+Check the list against the system by using the following command:
+
      $ sudo semanage login -l | more
- 
+
      Login Name    SELinux User    MLS/MCS Range    Service
 
      __default__   user_u                 s0-s0:c0.c1023        *
      root                   unconfined_u  s0-s0:c0.c1023        *
      system_u        system_u           s0-s0:c0.c1023        *
      joe                     staff_u                s0-s0:c0.c1023        *
- 
-All administrators must be mapped to the "sysadm_u", "staff_u", or an appropriately tailored confined role as defined by the organization. 
- 
-All authorized nonadministrative users must be mapped to the "user_u" role. 
- 
+
+All administrators must be mapped to the "sysadm_u", "staff_u", or an appropriately tailored confined role as defined by the organization.
+
+All authorized nonadministrative users must be mapped to the "user_u" role.
+
 If they are not mapped in this way, this is a finding.
 
 References:
@@ -1916,7 +1916,7 @@ CCI-002265
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 57 *******************************
 
@@ -1955,7 +1955,7 @@ Example output:
            Key fingerprint = 6A6A A7C9 7C88 90AE C6AE  BFE2 F76F 66C3 D408 2792
      uid                   Red Hat, Inc. (auxiliary key) <security@redhat.com>
      sub   rsa4096/1B5584D3 2018-06-27 [E]
-	   
+
 Compare key fingerprints of installed Red Hat GPG keys with fingerprints listed for RHEL 8 on Red Hat "Product Signing Keys" webpage at https://access.redhat.com/security/team/key.
 
 If key fingerprints do not match, this is a finding.
@@ -1970,7 +1970,7 @@ CCI-003992
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 58 *******************************
 
@@ -1988,7 +1988,7 @@ Verify that the "mailx" package is installed on the system:
      $ sudo yum list installed mailx
 
      mailx.x86_64     12.5-29.el8     @rhel-8-for-x86_64-baseos-rpm
-	 
+
 If "mailx" package is not installed, this is a finding.
 
 References:
@@ -2000,7 +2000,7 @@ CCI-001744
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 59 *******************************
 
@@ -2032,7 +2032,7 @@ CCI-000366
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 60 *******************************
 
@@ -2062,7 +2062,7 @@ CCI-000169
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 61 *******************************
 
@@ -2086,8 +2086,8 @@ Check the "aide.conf" file to determine if the "xattrs" rule has been added to t
 An example rule that includes the "xattrs" rule follows:
 
 All= p+i+n+u+g+s+m+S+sha512+acl+xattrs+selinux
-/bin All # apply the custom rule to the files in bin 
-/sbin All # apply the same custom rule to the files in sbin 
+/bin All # apply the custom rule to the files in bin
+/sbin All # apply the same custom rule to the files in sbin
 
 If the "xattrs" rule is not being used on all uncommented selection lines in the "/etc/aide.conf" file, or extended attributes are not being checked by another file integrity tool, this is a finding.
 
@@ -2100,7 +2100,7 @@ CCI-000366
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 62 *******************************
 
@@ -2136,7 +2136,6 @@ CCI-000366
      [ ] Not a Finding
      [ ] Not Applicable
      [X] Not Reviewed
-     Enter any comments : 
+     Enter any comments :
 
 ******************************* end of question 63 *******************************
-
