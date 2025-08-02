@@ -27,7 +27,7 @@
 check_v_230500 () {
     local finding=1
     echo "MANUAL CHECK OF FIREWALL"
-    firewall-cmd --list-all-zones
+    firewall-cmd --list-all
     return $finding
 }
 
